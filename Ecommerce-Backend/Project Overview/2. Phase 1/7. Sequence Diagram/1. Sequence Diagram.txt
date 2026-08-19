@@ -1,0 +1,10 @@
+Sequence Diagram
+ ● User Registration
+ ● Login
+ ● Product Search
+ ● Add to Cart
+ ● Checkout
+ ● Place Order
+ ● Payment
+ ● Cancel Order
+ ● Review Product

@@ -1,0 +1,89 @@
+1. Functional Requirements
+				IDENTITY MICROSERVICE
+***********************************************************************************************************
+ID		Requirement	  	Details / Acceptance Criteria
+FR-CA-01	Add to Cart	  	Logged-in user adds product + qty. System validates stock with Inventory Service. Store price snapshot.
+FR-CA-02	View Cart	  	User sees all items, qty, price, discount, line total, cart total.
+FR-CA-03	Update Quantity	  	User can increase/decrease qty. System re-validates stock.
+FR-CA-04	Remove Item	  	User can remove single item or clear cart.
+FR-CA-05	Cart Persistence  	Cart persists across logins. Guest cart merges into user cart on login.
+FR-CA-06	Cart Expiry	  	Cart items expire after 30 days of inactivity.
+
+
+				CATALOG MICROSERVICE
+***********************************************************************************************************
+ID		Requirement	        Details / Acceptance Criteria
+FR-CT-01	Product CRUD - Admin	SELLER/ADMIN can create, update, delete products. Fields: name, desc, price, discount, images, category, brand, SKU.
+FR-CT-02	Product View - Customer	Any user can view product details. Show price, specialPrice = price - discount, stock status.
+FR-CT-03	Category Management	ADMIN can CRUD categories. Categories can be nested: Electronics > Mobiles > Android.
+FR-CT-04	Brand Management	ADMIN can CRUD brands. Product must be linked to 1 brand.
+FR-CT-05	Product Search		User can search by keyword. Search fields: name, description, brand, category.
+FR-CT-06	Filtering		Filter products by: price range, category, brand, rating, in-stock only.
+FR-CT-07	Sorting			Sort by: price low-high, price high-low, newest, rating, popularity.
+FR-CT-08	Pagination		All list endpoints must support page, size, sort. Default size = 20.
+FR-CT-09	Product Images		Each product has 1 main image + N gallery images. Support upload/delete.
+FR-CT-10	Product Reviews		CUSTOMER who purchased can add 1 review + 1-5 star rating per product. Can update/delete own review.
+
+
+				INVENTORY MICROSERVICE
+***********************************************************************************************************
+ID		Requirement		Details / Acceptance Criteria
+FR-IN-01	Stock Initialization	When new product created, inventory record auto-created with qty = 0.
+FR-IN-02	Stock Update		SELLER/ADMIN can add/deduct stock. System tracks availableQty, reservedQty, soldQty.
+FR-IN-03	Reserve Stock		On "Add to Cart" or "Place Order", system reserves qty: available -= n, reserved += n. Reserve expires in 15 min if order not placed.
+FR-IN-04	Release Stock		If order cancelled or payment fails, reserved qty moves back to available.
+FR-IN-05	Confirm Stock		On payment success, reserved -= n, sold += n.
+FR-IN-06	Stock Validation	System rejects add-to-cart if availableQty < requestedQty. Show "Out of Stock".
+
+
+				CART MICROSERVICE
+***********************************************************************************************************
+ID		Requirement		Details / Acceptance Criteria
+FR-CA-01	Add to Cart		Logged-in user adds product + qty. System validates stock with Inventory Service. Store price snapshot.
+FR-CA-02	View Cart		User sees all items, qty, price, discount, line total, cart total.
+FR-CA-03	Update Quantity		User can increase/decrease qty. System re-validates stock.
+FR-CA-04	Remove Item		User can remove single item or clear cart.
+FR-CA-05	Cart Persistence	Cart persists across logins. Guest cart merges into user cart on login.
+FR-CA-06	Cart Expiry		Cart items expire after 30 days of inactivity.
+
+
+				ORDER MICROSERVICE
+***********************************************************************************************************
+ID		Requirement		Details / Acceptance Criteria
+FR-OR-01	Place Order		User checks out cart. System creates Order with status PENDING. Takes snapshot of product name, price, discount.
+FR-OR-02	Order Validation	System validates: cart not empty, all items in stock, address selected, payment method selected.
+FR-OR-03	Order Status Flow	Status: PENDING -> CONFIRMED -> SHIPPED -> DELIVERED. Can also go CANCELLED.
+FR-OR-04	Cancel Order		User can cancel if status = PENDING or CONFIRMED. System triggers inventory release + refund.
+FR-OR-05	Order History		User can view all past orders with filters: date range, status.
+FR-OR-06	Order Details		User can view single order: items, price breakdown, shipping address, status timeline.
+FR-OR-07	Seller View		SELLER can view orders containing their products only. Can update status to SHIPPED.
+
+
+				PAYMENT MICROSERVICE
+***********************************************************************************************************
+ID		Requirement		Details / Acceptance Criteria
+FR-PA-01	Initiate Payment	On order placement, system creates Payment record with status PENDING.
+FR-PA-02	Mock Payment Process	Simulate success/failure. 90% success rate for testing.
+FR-PA-03	Payment Status Update	On success: status = SUCCESS, generate transactionId. On fail: status = FAILED.
+FR-PA-04	Refund			On order cancel, if payment = SUCCESS, create refund record. Status = REFUNDED.
+FR-PA-05	Payment History		User can view all transactions: amount, date, status, orderId.
+FR-PA-06	Payment Methods		Support mock: CREDIT_CARD, UPI, COD. COD skips payment step.
+
+
+				NOTIFICATION MICROSERVICE
+***********************************************************************************************************
+ID		Requirement		Details / Acceptance Criteria
+FR-NO-01	Email on Registration	Send welcome email after successful signup.
+FR-NO-02	Email on Order		Send email on: order placed, payment success, order shipped, order delivered, order cancelled.
+FR-NO-03	SMS Mock		Log SMS to console for OTP, order updates. No real SMS in Phase 2.
+FR-NO-04	Push Notification Mock	Log push for: price drop on wishlist, back-in-stock.
+FR-NO-05	Notification Preference	User can opt-in/out of email/SMS per notification type.
+
+
+				AI MICROSERVICE
+***********************************************************************************************************
+ID		Requirement		Details / Acceptance Criteria
+FR-AI-01	Product Recommendation	Return mock list: "Users who bought X also bought Y". Input: productId.
+FR-AI-02	Chat Assistant		Accept user query string, return mock response: "How can I help you shop today?"
+FR-AI-03	Semantic Search		Accept natural language: "red shoes under 2000". Return mock product list.
+FR-AI-04	Review Summary		Input: productId. Return mock: "90% users liked the battery life".

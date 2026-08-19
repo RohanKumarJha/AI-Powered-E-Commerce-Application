@@ -1,0 +1,32 @@
+MICROSERVICES CLASSES
+				IDENTITY MICROSERVICE
+***********************************************************************************************************
+Model : User, Address, Role             				Service : UserService, AddressService
+
+				CATALOG MICROSERVICE
+***********************************************************************************************************
+Model : Category, Brand, Product, Review  	     			Service : ProductService, CategoryService, BrandService, ReviewService
+
+				INVENTORY MICROSERVICE
+***********************************************************************************************************
+Model : Inventory							Service : InventoryService
+
+				CART MICROSERVICE
+***********************************************************************************************************
+Model : Cart, CartItem							Service : CartService
+
+				ORDER MICROSERVICE
+***********************************************************************************************************
+Model : Order, OrderItem						Service : OrderService
+
+				PAYMENT MICROSERVICE
+***********************************************************************************************************
+Model : Payment								Service : PaymentService
+
+				NOTIFICATION MICROSERVICE
+***********************************************************************************************************
+Model : Notification, NotificationPreference				Service : NotificationService
+
+				AI MICROSERVICE
+***********************************************************************************************************
+Model : Recommendation, ChatRequest, ChatResponse, ReviewSummary	Service : AIService

@@ -1,0 +1,153 @@
+			Identity Service LLD
+***********************************************************************************************************
+ ● Package structure
+ ● Layered architecture
+ ● Complete class diagram
+ ● Entity model
+ ● DTOs
+ ● Repository interfaces
+ ● Service interfaces
+ ● Service implementations
+ ● JWT flow
+ ● Spring Security flow
+ ● RBAC design
+ ● Exception hierarchy
+ ● Validation
+ ● REST APIs
+ ● Sequence diagrams
+ ● Database schema
+ ● Design patterns (Factory, Strategy, Singleton)
+ ● Kafka events
+ ● OpenAPI contracts
+≈ 35–40 pages
+
+
+			Catalog Service LLD
+***********************************************************************************************************
+ ● MongoDB collections
+ ● Product aggregate
+ ● Category tree
+ ● Brand
+ ● Review
+ ● Specification Pattern
+ ● Builder Pattern
+ ● Mapper Pattern
+ ● Search architecture
+ ● Filtering
+ ● Pagination
+ ● Sorting
+ ● Sequence diagrams
+ ● APIs
+ ● UML
+≈ 40 pages
+
+
+			Inventory Service LLD
+***********************************************************************************************************
+ ● Stock reservation
+ ● Stock release
+ ● Available/Reserved/Sold lifecycle
+ ● Locking
+ ● Optimistic locking
+ ● Reservation expiration
+ ● Kafka consumers
+ ● Database schema
+ ● UML
+≈ 30 pages
+
+
+			Cart Service LLD
+***********************************************************************************************************
+ ● Redis design
+ ● Cart aggregate
+ ● Cart expiration
+ ● Cart merge
+ ● Price snapshot
+ ● Inventory validation
+ ● APIs
+ ● UML
+≈ 30 pages
+
+
+			Order Service LLD
+***********************************************************************************************************
+ ● Order Aggregate
+ ● Order Items
+ ● Address snapshot
+ ● Status State Machine
+ ● State Pattern
+ ● Saga Preparation
+ ● Kafka orchestration
+ ● APIs
+ ● UML
+≈ 45 pages
+
+
+			Payment Service LLD
+***********************************************************************************************************
+ ● Payment Aggregate
+ ● Refund
+ ● Transaction
+ ● Strategy Pattern
+ ● Adapter Pattern
+ ● Mock gateway
+ ● APIs
+ ● UML
+≈ 35 pages
+
+
+			Notification Service LLD
+***********************************************************************************************************
+ ● Email
+ ● SMS
+ ● Push
+ ● Preferences
+ ● Kafka Consumers
+ ● Template Engine
+ ● APIs
+≈ 25 pages
+
+
+			AI Service LLD
+***********************************************************************************************************
+ ● Recommendation APIs
+ ● Semantic Search
+ ● Chat Assistant
+ ● Review Summary
+ ● Prompt Service
+ ● Future ML Integration
+ ● APIs
+≈ 25 pages
+
+
+Each microservice LLD will contain : 
+ ● Objective
+ ● Responsibilities
+ ● Package Structure
+ ● Layered Architecture
+ ● Component Diagram
+ ● Class Diagram
+ ● Entity Design
+ ● DTO Design
+ ● Repository Layer
+ ● Service Layer
+ ● Controller Layer
+ ● Mapper Layer
+ ● Validation Layer
+ ● Exception Handling
+ ● Utility Classes
+ ● Security Design
+ ● Database Schema
+ ● REST API Specifications
+ ● Kafka Producers
+ ● Kafka Consumers
+ ● External Service Calls
+ ● Sequence Diagrams
+ ● State Diagrams (where applicable)
+ ● Design Patterns Used
+ ● Configuration Classes
+ ● UML Diagrams
+ ● Redis/Mongo/PostgreSQL/MySQL Design
+ ● Testing Strategy
+ ● OpenAPI Specification
+ ● Folder Structure

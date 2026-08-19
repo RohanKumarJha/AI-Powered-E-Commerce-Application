@@ -1,0 +1,114 @@
+notification-service
+│
+├── config
+│   ├── OpenApiConfig
+│   └── ModelMapperConfig
+│
+├── controller
+│   └── NotificationController
+│
+├── dto
+│   ├── request
+│   │   ├── NotificationRequest
+│   │   └── NotificationPreferenceRequest
+│   │
+│   └── response
+│       ├── NotificationResponse
+│       ├── NotificationPreferenceResponse
+│       └── ExceptionResponse
+│
+├── exception
+│   ├── ResourceNotFoundException
+│   ├── NotificationFailedException
+│   └── GlobalExceptionHandler
+│
+├── mapper
+│   ├── NotificationMapper
+│   └── NotificationPreferenceMapper
+│
+├── model
+│   ├── Notification
+│   ├── NotificationPreference
+│   │
+│   └── ENUM
+│       ├── NotificationType
+│       ├── NotificationStatus
+│       └── ReferenceType
+│
+├── repository
+│   ├── NotificationRepository
+│   └── NotificationPreferenceRepository
+│
+├── strategy
+│   ├── NotificationStrategy
+│   ├── EmailNotificationStrategy
+│   ├── SmsNotificationStrategy
+│   └── PushNotificationStrategy
+│
+├── adapter
+│   ├── NotificationProviderAdapter
+│   └── MockNotificationProviderAdapter
+│
+├── service
+│   ├── NotificationService
+│   │
+│   └── impl
+│       └── NotificationServiceImpl
+│
+├── util
+│
+└── resources
+    ├── application.yml
+    └── application-test.yml
+
+
+****************************************************************************************
+NotificationService
+sendRegistrationEmail(Long userId);
+
+sendOrderPlacedNotification(Long orderId);
+
+sendPaymentSuccessNotification(Long paymentId);
+
+sendOrderShippedNotification(Long orderId);
+
+sendOrderDeliveredNotification(Long orderId);
+
+sendOrderCancelledNotification(Long orderId);
+
+sendSms(String mobileNumber, String message);
+
+sendPushNotification(Long userId, String message);
+
+updateNotificationPreference(
+        Long userId,
+        NotificationPreferenceRequest request);
+
+getNotificationPreference(Long userId);
+
+
+*******************************************************************************************
+	Notification
+notificationId
+userId                  // Reference to Identity Service
+notificationType        // EMAIL, SMS, PUSH
+title
+message
+notificationStatus      // PENDING, SENT, FAILED
+referenceId             // OrderId, PaymentId, etc.
+referenceType           // ORDER, PAYMENT, USER
+sentAt
+createdAt
+updatedAt
+
+	NotificationPreference
+notificationPreferenceId
+userId                  // Reference to Identity Service
+emailEnabled
+smsEnabled
+pushEnabled
+orderNotification
+paymentNotification
+promotionNotification
+createdAt
+updatedAt

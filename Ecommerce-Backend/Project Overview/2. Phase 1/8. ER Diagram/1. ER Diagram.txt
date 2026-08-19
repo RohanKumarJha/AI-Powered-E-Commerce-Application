@@ -1,0 +1,41 @@
+4. MICROSERVICES ENTITY RELATIONSHIP DIAGRAM
+				IDENTITY MICROSERVICE
+***********************************************************************************************************
+User (1) 	───────< 	(N) Address			FK : address.user_id
+User (M) 	>──────< 	(M) Role			FK : user_roles.user_id, user_roles.role_id
+
+				CATALOG MICROSERVICE
+***********************************************************************************************************
+User (1) 	───────< 	(N) Category			Reference : category.createdByUserId
+User (1) 	───────< 	(N) Brand			Reference : brand.createdByUserId
+User (1) 	───────< 	(N) Product			Reference : product.createdByUserId
+User (1) 	───────< 	(N) Review			Reference : review.userId
+Category (1) 	───────< 	(N) Product			FK : product.category_id
+Brand (1)	───────<	(N) Product			FK : product.brand_id
+Product (1) 	───────< 	(N) Review			FK : review.product_id
+
+				INVENTORY MICROSERVICE
+***********************************************************************************************************
+Product (1) 	───────< 	(1) Inventory			Reference : inventory.productId
+Implementation note: In a true microservices architecture, Inventory stores productId instead of having a JPA @OneToOne relationship*****
+
+				CART MICROSERVICE
+***********************************************************************************************************
+User (1) 	───────< 	(1) Cart			Reference : cart.userId
+Cart (1) 	───────< 	(N) CartItem			FK : cart_item.cart_id
+Product (1) 	───────<	(N) CartItem			Reference : cart_item.productId
+
+				ORDER MICROSERVICE
+***********************************************************************************************************
+User (1) 	───────< 	(N) Order			Reference : order.userId 
+Order (1) 	───────< 	(N) OrderItem			FK : order_item.order_id
+Product (1) 	───────< 	(N) OrderItem			Reference : orderItem.productId
+
+				PAYMENT MICROSERVICE
+***********************************************************************************************************
+Order (1) 	───────< 	(1) Payment			Reference : payment.orderId
+
+				NOTIFICATION MICROSERVICE
+***********************************************************************************************************
+User (1) 	───────< 	(N) Notification		Reference : notification.userId
+User (1) 	───────< 	(1) NotificationPreference	Reference : notification_preference.userId

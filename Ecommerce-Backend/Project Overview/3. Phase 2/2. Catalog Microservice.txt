@@ -1,0 +1,205 @@
+catalog-service
+│
+├── config
+│   ├── OpenApiConfig                    ✅ Phase 2
+│   ├── ModelMapperConfig                ✅ Phase 2
+│   ├── JacksonConfig                    📝 Future
+│   └── WebMvcConfig                     📝 Future
+│
+├── controller
+│   ├── ProductController                ✅ Phase 2
+│   ├── CategoryController               ✅ Phase 2
+│   ├── BrandController                  ✅ Phase 2
+│   └── ReviewController                 ✅ Phase 2
+│
+├── dto
+│   ├── request
+│   │   ├── ProductRequest               ✅ Phase 2
+│   │   ├── CategoryRequest              ✅ Phase 2
+│   │   ├── BrandRequest                 ✅ Phase 2
+│   │   ├── ReviewRequest                ✅ Phase 2
+│   │   ├── ProductImageRequest          ✅ Phase 2
+│   │   └── ProductFilterRequest         ✅ Phase 2
+│   │
+│   └── response
+│       ├── ProductResponse              ✅ Phase 2
+│       ├── CategoryResponse             ✅ Phase 2
+│       ├── BrandResponse                ✅ Phase 2
+│       ├── ReviewResponse               ✅ Phase 2
+│       ├── ProductImageResponse         ✅ Phase 2
+│       └── ExceptionResponse            ✅ Phase 2
+│
+├── exception
+│   ├── ResourceNotFoundException        ✅ Phase 2
+│   ├── ResourceAlreadyExistsException   ✅ Phase 2
+│   ├── BadRequestException              ✅ Phase 2
+│   └── GlobalExceptionHandler           ✅ Phase 2
+│
+├── factory
+│   ├── ProductFactory                   ✅ Phase 2
+│   ├── CategoryFactory                  ✅ Phase 2
+│   ├── BrandFactory                     ✅ Phase 2
+│   ├── ReviewFactory                    ✅ Phase 2
+│   └── ProductImageFactory              ✅ Phase 2
+│
+├── mapper
+│   ├── ProductMapper                    ✅ Phase 2
+│   ├── CategoryMapper                   ✅ Phase 2
+│   ├── BrandMapper                      ✅ Phase 2
+│   ├── ReviewMapper                     ✅ Phase 2
+│   └── ProductImageMapper               ✅ Phase 2
+│
+├── model
+│   ├── Product
+│   ├── Category
+│   ├── Brand
+│   ├── ProductImage
+│   └── Review
+│
+├── repository
+│   ├── ProductRepository
+│   ├── CategoryRepository
+│   ├── BrandRepository
+│   ├── ProductImageRepository
+│   └── ReviewRepository
+│
+├── specification
+│   └── ProductSpecification             📝 Phase 2 (Business Logic)
+│
+├── service
+│   ├── ProductService                   ✅ Phase 2
+│   ├── CategoryService                  ✅ Phase 2
+│   ├── BrandService                     ✅ Phase 2
+│   ├── ReviewService                    ✅ Phase 2
+│   └── impl
+│       ├── ProductServiceImpl           ✅ Phase 2
+│       ├── CategoryServiceImpl          ✅ Phase 2
+│       ├── BrandServiceImpl             ✅ Phase 2
+│       └── ReviewServiceImpl            ✅ Phase 2
+│
+└── util
+
+
+**************************************************************************************************
+2. Catalog Service
+
+ProductService
+createProduct(ProductRequest request);
+
+updateProduct(Long productId, ProductRequest request);
+
+deleteProduct(Long productId);
+
+getProductById(Long productId);
+
+getAllProducts();
+
+searchProducts(String keyword);
+
+filterProducts(ProductFilterRequest request);
+
+sortProducts(String sortBy);
+
+getProducts(int page, int size);
+
+uploadProductImage(Long productId, ImageRequest request);
+
+deleteProductImage(Long imageId);
+
+
+
+CategoryService
+createCategory(CategoryRequest request);
+
+updateCategory(Long categoryId, CategoryRequest request);
+
+deleteCategory(Long categoryId);
+
+getCategoryById(Long categoryId);
+
+getAllCategories();
+
+
+
+
+BrandService
+createBrand(BrandRequest request);
+
+updateBrand(Long brandId, BrandRequest request);
+
+deleteBrand(Long brandId);
+
+getBrandById(Long brandId);
+
+getAllBrands();
+
+
+
+
+ReviewService
+addReview(Long productId, ReviewRequest request);
+
+updateReview(Long reviewId, ReviewRequest request);
+
+deleteReview(Long reviewId);
+
+getProductReviews(Long productId);
+
+
+
+**************************************************************************************************
+	Product
+productId
+name
+description
+sku
+price
+discount
+specialPrice
+categoryId
+brandId
+sellerId              // Reference to Identity Service
+averageRating
+reviewCount
+active
+createdAt
+updatedAt
+
+	Category
+categoryId
+name
+description
+parentCategoryId      // Self Reference
+imageUrl
+active
+createdAt
+updatedAt
+
+	Brand
+brandId
+name
+description
+logoUrl
+website
+active
+createdAt
+updatedAt
+
+	ProductImage
+productImageId
+product
+imageUrl
+displayOrder
+primaryImage
+createdAt
+updatedAt
+
+	Review
+reviewId
+product
+userId              // Identity Service reference
+rating
+title
+comment
+createdAt
+updatedAt

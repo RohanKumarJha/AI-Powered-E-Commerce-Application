@@ -1,0 +1,128 @@
+2. NON-FUNCTIONAL REQUIREMENTS
+				2.1 Performance Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-PER-01	API Response Time	95% of API requests must respond within 500 ms under normal load.
+NFR-PER-02	Product Search		Search results should be returned within 300 ms.
+NFR-PER-03	Checkout Performance	Checkout process should complete within 5 seconds excluding external payment gateway delays.
+NFR-PER-04	Database Queries	Frequently executed queries should complete within 100 ms.
+NFR-PER-05	Page Loading		Product listing page should load within 2 seconds on broadband connections.
+
+				2.2 Scalability Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-SCA-01	Horizontal Scaling	All microservices must support horizontal scaling.
+NFR-SCA-02	Independent Scaling	Each microservice should scale independently based on load.
+NFR-SCA-03	Stateless Services	Business services should remain stateless to support load balancing.
+NFR-SCA-04	Database Scaling	Support read replicas for read-heavy workloads.
+NFR-SCA-05	Cache Scaling		Redis cluster should support distributed caching.
+
+				2.3 Availability Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-AVL-01	System Availability	Target availability: 99.9% uptime.
+NFR-AVL-02	Service Failure		Failure of one microservice should not bring down others.
+NFR-AVL-03	Health Monitoring	Every service must expose /actuator/health.
+NFR-AVL-04	Auto Restart		Failed containers should restart automatically.
+NFR-AVL-05	Graceful Degradation	Non-critical service failures should not stop core purchasing functionality.
+
+				2.4 Reliability Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-REL-01	Data Consistency	Order and Payment services must maintain eventual consistency.
+NFR-REL-02	Retry Mechanism		Failed inter-service requests should retry automatically.
+NFR-REL-03	Circuit Breaker		Use circuit breaker to prevent cascading failures.
+NFR-REL-04	Timeout Handling	Inter-service calls should have configurable timeouts.
+NFR-REL-05	Message Delivery	Event-driven messages should guarantee at-least-once delivery.
+
+				2.5 Security Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-SEC-01	Authentication		JWT-based authentication.
+NFR-SEC-02	Authorization		Role-Based Access Control (RBAC).
+NFR-SEC-03	Password Encryption	Passwords must be stored using BCrypt hashing.
+NFR-SEC-04	HTTPS			All APIs must be accessible only over HTTPS.
+NFR-SEC-05	Input Validation	Validate all incoming requests.
+NFR-SEC-06	SQL Injection		Prevent SQL Injection using parameterized queries/JPA.
+NFR-SEC-07	XSS Protection		Sanitize all user inputs displayed on UI.
+NFR-SEC-08	CSRF			Enable CSRF protection where applicable.
+NFR-SEC-09	Sensitive Data		Never expose passwords or secrets in API responses.
+NFR-SEC-10	Secret Management	Store secrets using environment variables or secret manager.
+
+				2.6 Maintainability Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-MNT-01	Layered Architecture	Follow Controller → Service → Repository pattern.
+NFR-MNT-02	Coding Standards	Follow Java coding conventions and clean code principles.
+NFR-MNT-03	Documentation		All APIs must be documented using OpenAPI/Swagger.
+NFR-MNT-04	Code Reviews		Pull Requests must be reviewed before merge.
+NFR-MNT-05	Modular Design		Each microservice must be independently deployable.
+
+				2.7 Usability Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-USA-01	User Interface		UI should be responsive across desktop and mobile devices.
+NFR-USA-02	Error Messages		Display user-friendly validation and error messages.
+NFR-USA-03	Accessibility		Follow basic WCAG accessibility guidelines.
+NFR-USA-04	Navigation		Users should access any primary feature within three clicks.
+
+				2.8 Logging Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-LOG-01	Request Logging		Log every incoming API request.
+NFR-LOG-02	Error Logging		Log all application errors with stack traces.
+NFR-LOG-03	Correlation ID		Include correlation IDs for distributed tracing.
+NFR-LOG-04	Centralized Logs	Aggregate logs using ELK Stack or Loki.
+NFR-LOG-05	Log Retention		Retain logs for at least 30 days.
+
+				2.9 Monitoring Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-MON-01	Metrics	Expose 		Prometheus metrics for all services.
+NFR-MON-02	Dashboards		Monitor services using Grafana dashboards.
+NFR-MON-03	Alerts			Configure alerts for high CPU, memory, and error rates.
+NFR-MON-04	Health Checks		Monitor service health endpoints continuously.
+
+				2.10 Deployment Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-DEP-01	Containerization	Package all services as Docker containers.
+NFR-DEP-02	Orchestration		Support deployment on Kubernetes.
+NFR-DEP-03	CI/CD			Automated build, test, and deployment pipeline.
+NFR-DEP-04	Zero Downtime		Deployments should avoid downtime using rolling updates.
+
+				2.11 Backup & Recovery Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-BKP-01	Database Backup		Daily automated database backups.
+NFR-BKP-02	Recovery		Restore latest backup within 30 minutes.
+NFR-BKP-03	Backup Verification	Verify backup integrity periodically.
+
+				2.12 Compatibility Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-COM-01	Browser Support		Chrome, Edge, Firefox, and Safari (latest two versions).
+NFR-COM-02	API Format		REST APIs should use JSON.
+NFR-COM-03	Database		Support MySQL 8.x or compatible versions.
+
+				2.13 Audit Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-AUD-01	Audit Trail		Record create, update, delete, login, logout, and payment events.
+NFR-AUD-02	Timestamp		Every audit record should include timestamp and user ID.
+NFR-AUD-03	Immutable Logs		Audit records should not be editable by users.
+
+				2.14 Compliance Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-CMP-01	Data Privacy		Protect personal data according to applicable privacy regulations.
+NFR-CMP-02	Payment Security	Do not store raw card information.
+NFR-CMP-03	Secure Communication	Encrypt all client-service and service-service communication where applicable.
+
+				2.15 Testability Requirements
+***********************************************************************************************************
+ID		Requirement		Acceptance Criteria
+NFR-TST-01	Unit Test Coverage	Minimum 80% unit test coverage.
+NFR-TST-02	Integration Tests	Every microservice should include integration tests.
+NFR-TST-03	API Testing		All REST endpoints should have automated API tests.
+NFR-TST-04	Performance Testing	Verify system behavior under expected peak load before release.

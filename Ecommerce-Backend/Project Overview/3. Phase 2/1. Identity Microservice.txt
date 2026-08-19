@@ -1,0 +1,171 @@
+identity-service
+│
+├── config
+│   ├── OpenApiConfig                ✅ Phase 2
+│   ├── ModelMapperConfig            ✅ Phase 2
+│   ├── JacksonConfig                📝 Future
+│   ├── PasswordEncoderConfig        📝 Phase 3
+│   ├── JwtConfig                    📝 Phase 3
+│   └── SecurityConfig               📝 Phase 3
+│
+├── controller
+│   ├── UserController               ✅ Phase 2
+│   ├── AddressController            ✅ Phase 2
+│   ├── RoleController               ✅ Phase 2
+│   └── AuthController               📝 Phase 3
+│
+├── dto
+│   ├── request
+│   │   ├── RegisterRequest              ✅ Phase 2
+│   │   ├── UpdateUserRequest            ✅ Phase 2
+│   │   ├── AddressRequest               ✅ Phase 2
+│   │   ├── RoleRequest                  ✅ Phase 2
+│   │   ├── LoginRequest                 📝 Phase 3
+│   │   ├── ForgotPasswordRequest        📝 Phase 3
+│   │   ├── ResetPasswordRequest         📝 Phase 3
+│   │   ├── RefreshTokenRequest          📝 Phase 3
+│   │   └── ChangePasswordRequest        📝 Phase 3
+│   │
+│   └── response
+│       ├── UserResponse                 ✅ Phase 2
+│       ├── AddressResponse              ✅ Phase 2
+│       ├── RoleResponse                 ✅ Phase 2
+│       ├── ApiResponse<T>               ✅ Phase 2
+│       ├── ExceptionResponse            ✅ Phase 2
+│       ├── LoginResponse                📝 Phase 3
+│       └── JwtResponse                  📝 Phase 3
+│
+├── exception
+│   ├── ResourceNotFoundException        ✅ Phase 2
+│   ├── ResourceAlreadyExistsException   ✅ Phase 2
+│   ├── BadRequestException              ✅ Phase 2
+│   ├── UnauthorizedException            📝 Phase 3
+│   ├── ForbiddenException               📝 Phase 3
+│   ├── InvalidTokenException            📝 Phase 3
+│   └── GlobalExceptionHandler           ✅ Phase 2
+│
+├── factory
+│   ├── UserFactory                      ✅ Phase 2
+│   ├── AddressFactory                   📝 Future
+│   ├── RoleFactory                      📝 Future
+│   ├── AuthenticationFactory            📝 Phase 3
+│   ├── OAuthUserFactory                 📝 Phase 3
+│   ├── JwtTokenFactory                  📝 Phase 3
+│   ├── RefreshTokenFactory              📝 Phase 3
+│   └── PasswordResetTokenFactory        📝 Phase 3
+│
+├── mapper
+│   ├── UserMapper                       ✅ Phase 2
+│   ├── AddressMapper                    ✅ Phase 2
+│   └── RoleMapper                       ✅ Phase 2
+│
+├── model
+│   ├── User
+│   ├── Role
+│   └── Address
+│
+├── repository
+│   ├── UserRepository
+│   ├── RoleRepository
+│   └── AddressRepository
+│
+├── service
+│   ├── UserService                      ✅ Phase 2
+│   ├── AddressService                   ✅ Phase 2
+│   ├── RoleService                      ✅ Phase 2
+│   ├── AuthService                      📝 Phase 3
+│   └── impl
+│       ├── UserServiceImpl              ✅ Phase 2
+│       ├── AddressServiceImpl           ✅ Phase 2
+│       ├── RoleServiceImpl              ✅ Phase 2
+│       └── AuthServiceImpl              📝 Phase 3
+│
+├── strategy
+│   ├── PasswordEncryptionStrategy       📝 Phase 3
+│   └── BCryptPasswordStrategy           📝 Phase 3
+│
+└── util
+
+**************************************************************************************************
+1. Identity Service
+
+UserService
+registerUser(RegisterRequest request);
+
+login(LoginRequest request);
+
+getUserById(Long userId);
+
+getUserByEmail(String email);
+
+updateUser(Long userId, UpdateUserRequest request);
+
+deleteUser(Long userId);
+
+getAllUsers();
+
+
+
+AddressService
+addAddress(Long userId, AddressRequest request);
+
+updateAddress(Long addressId, AddressRequest request);
+
+deleteAddress(Long addressId);
+
+getAddressById(Long addressId);
+
+getUserAddresses(Long userId);
+
+
+
+RoleService
+createRole(RoleRequest request);
+
+updateRole(Long roleId, RoleRequest request);
+
+deleteRole(Long roleId);
+
+assignRole(Long userId, Long roleId);
+
+removeRole(Long userId, Long roleId);
+
+getAllRoles();
+
+
+**************************************************************************************************
+	User
+id
+firstName
+lastName
+email
+password
+phoneNumber
+enabled
+roles              // ManyToMany
+addresses          // OneToMany
+createdAt
+updatedAt
+
+	Role
+roleId
+name
+description
+createdAt
+updatedAt
+
+	Address
+id
+user               // ManyToOne
+fullName
+mobileNumber
+addressLine1
+addressLine2
+city
+state
+country
+postalCode
+addressType
+isDefault
+createdAt
+updatedAt

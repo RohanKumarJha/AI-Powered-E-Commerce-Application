@@ -1,0 +1,118 @@
+order-service
+│
+├── config
+│   ├── ModelMapperConfig
+│   └── OpenApiConfig
+│
+├── controller
+│   └── OrderController
+│
+├── dto
+│   ├── request
+│   │   ├── OrderRequest
+│   │   ├── OrderItemRequest
+│   │   └── UpdateOrderStatusRequest
+│   │
+│   └── response
+│       ├── OrderResponse
+│       ├── OrderItemResponse
+│       └── ExceptionResponse
+│
+├── exception
+│   ├── ResourceNotFoundException
+│   └── GlobalExceptionHandler
+│
+├── mapper
+│   ├── OrderMapper
+│   └── OrderItemMapper
+│
+├── model
+│   ├── Order
+│   ├── OrderItem
+│   │
+│   └── ENUM
+│       ├── OrderStatus
+│       └── PaymentMethod
+│
+├── repository
+│   ├── OrderRepository
+│   └── OrderItemRepository
+│
+├── state
+│   ├── OrderState
+│   ├── PendingState
+│   ├── ConfirmedState
+│   ├── ShippedState
+│   ├── DeliveredState
+│   └── CancelledState
+│
+├── service
+│   ├── OrderService
+│   ├── OrderItemService
+│   │
+│   └── impl
+│       ├── OrderServiceImpl
+│       └── OrderItemServiceImpl
+│
+├── util
+│
+├── resources
+│   └── application.yml
+│
+└── OrderServiceApplication
+
+
+************************************************************************************************
+OrderService
+placeOrder(Long userId, OrderRequest request);
+
+cancelOrder(Long orderId);
+
+getOrderById(Long orderId);
+
+getUserOrders(Long userId);
+
+getSellerOrders(Long sellerId);
+
+updateOrderStatus(Long orderId, OrderStatus status);
+
+getOrderHistory(Long userId);
+
+validateOrder(OrderRequest request);
+
+
+***********************************************************************************************
+	Order
+orderId
+orderNumber
+userId                  // Reference to Identity Service
+addressId               // Reference to Identity Service
+paymentId               // Reference to Payment Service
+orderItems              // OneToMany
+status                  // OrderStatus Enum
+subtotal
+discount
+shippingCharge
+tax
+totalAmount
+paymentMethod           // PaymentMethod Enum
+estimatedDeliveryDate
+placedAt
+createdAt
+updatedAt
+
+	OrderItem
+orderItemId
+order                   // ManyToOne
+productId               // Reference to Catalog Service
+sellerId                // Reference to Identity Service
+productNameSnapshot
+skuSnapshot
+mainImageUrlSnapshot
+priceSnapshot
+discountSnapshot
+specialPriceSnapshot
+quantity
+lineTotal
+createdAt
+updatedAt

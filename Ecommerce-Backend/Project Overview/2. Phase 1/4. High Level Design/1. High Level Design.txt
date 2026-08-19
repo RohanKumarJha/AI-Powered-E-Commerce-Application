@@ -1,0 +1,417 @@
+4. HIGH LEVEL DESIGN (HLD)
+				4.1 Purpose
+***********************************************************************************************************
+The High-Level Design (HLD) defines the overall architecture of the AI-Powered E-Commerce Backend Microservices Platform. It describes the system components, microservices, communication mechanisms, infrastructure, database architecture, security, deployment model, and technology stack before implementation.
+The system follows a cloud-native microservices architecture with Domain-Driven Design (DDD), Event-Driven Architecture (EDA), Database per Service, and Polyglot Persistence.
+
+
+				4.2 Architecture Goals
+***********************************************************************************************************
+The architecture is designed to provide:
+ ● High Availability
+ ● High Scalability
+ ● Loose Coupling
+ ● High Cohesion
+ ● Independent Deployment
+ ● Fault Isolation
+ ● Event-Driven Communication
+ ● Secure Authentication & Authorization
+ ● Observability
+ ● Cloud-Native Deployment
+ ● Polyglot Persistence
+
+
+				4.3 Architecture Style
+***********************************************************************************************************
+Component						Technology
+Architecture						Microservices
+Communication						REST + Kafka
+API Gateway						Spring Cloud Gateway
+Service Discovery					Eureka
+Configuration						Spring Cloud Config
+Authentication						JWT
+Authorization						RBAC
+Database Pattern					Database per Service
+Persistence Pattern					Polyglot Persistence
+Cache							Redis
+Search Engine						Elasticsearch
+Monitoring						Prometheus + Grafana
+Logging							ELK Stack
+Tracing							Zipkin
+Fault Tolerance						Resilience4j
+Deployment						Docker + Kubernetes
+
+
+				4.4 Overall System Architecture
+***********************************************************************************************************
+                                            React Frontend
+                                      Web / Admin / Mobile App
+                                                   │
+                                            HTTPS + JWT
+                                                   │
+                                         Spring Cloud Gateway
+                                                   │
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+│            │             │            │            │             │             │               │
+│            │             │            │            │             │             │               │
+▼            ▼             ▼            ▼            ▼             ▼             ▼               ▼
+
+Identity   Catalog    Inventory      Cart        Order        Payment    Notification          AI
+Service    Service     Service      Service      Service      Service      Service           Service
+
+│            │             │            │            │             │             │               │
+▼            ▼             ▼            ▼            ▼             ▼             ▼               ▼
+
+MySQL     MongoDB    PostgreSQL     Redis     PostgreSQL    PostgreSQL     MongoDB      MySQL + Elasticsearch
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                           Apache Kafka (Event Driven Communication)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+                    Eureka | Config Server | Prometheus | Grafana
+                    Zipkin | ELK Stack | Docker | Kubernetes
+
+
+				4.5 System Components
+***********************************************************************************************************
+			Client Layer
+Applications
+ ● React Web
+ ● Admin Dashboard
+ ● Future Mobile App
+
+Responsibilities
+ ● User Interface
+ ● JWT Storage
+ ● API Communication
+ ● Response Rendering
+
+			API Gateway
+Responsibilities
+ ● Single Entry Point
+ ● Request Routing
+ ● JWT Authentication
+ ● Rate Limiting
+ ● API Logging
+ ● Request Filtering
+ ● Load Balancing
+
+Technology
+ ● Spring Cloud Gateway
+
+			Service Registry
+Technology
+ ● Eureka Server
+
+Responsibilities
+ ● Service Registration
+ ● Service Discovery
+ ● Dynamic Lookup
+
+			Config Server
+Responsibilities
+ ● Centralized Configuration
+ ● Environment-specific Configuration
+ ● Externalized Properties
+
+
+				4.6 Microservices
+***********************************************************************************************************
+			Identity Service
+Responsibilities
+ ● User Registration
+ ● Login
+ ● JWT Generation
+ ● User Profile
+ ● Address Management
+ ● Role Management
+
+Database 
+ ● MySQL
+
+Reason 
+ ● Identity data is highly relational and requires ACID transactions.
+
+			Catalog Service
+Responsibilities
+ ● Product Management
+ ● Category Management
+ ● Brand Management
+ ● Product Reviews
+ ● Product Search
+ ● Filtering
+ ● Sorting
+
+Database 
+ ● MongoDB
+
+Reason 
+ ● Products have dynamic attributes.
+
+Example:
+Laptop : RAM,CPU,GPU
+Phone : Battery,Camera,SIM
+Shoes : Size,Color,Material
+MongoDB handles flexible schemas efficiently.
+
+			Inventory Service
+Responsibilities
+ ● Stock Management
+ ● Reserve Stock
+ ● Release Stock
+ ● Inventory Validation
+
+Database 
+ ● PostgreSQL
+
+Reason 
+ ● Inventory requires strong consistency and transactional updates to prevent overselling.
+
+			Cart Service
+Responsibilities
+ ● Add Item
+ ● Remove Item
+ ● Update Quantity
+ ● View Cart
+ ● Cart Expiry
+
+Database 
+ ● Redis
+
+Reason 
+ ● Shopping carts require extremely fast read/write performance and automatic expiration (TTL).
+
+			Order Service
+Responsibilities
+ ● Checkout
+ ● Place Order
+ ● Order History
+ ● Cancel Order
+ ● Order Tracking
+
+Database 
+ ● PostgreSQL
+
+Reason 
+ ● Orders are transactional and require reliable ACID guarantees.
+
+			Payment Service
+Responsibilities
+ ● Payment Processing
+ ● Refund
+ ● Payment History
+
+Database 
+ ● PostgreSQL
+
+Reason 
+ ● Financial transactions require strong consistency, durability, and transactional integrity.
+
+			Notification Service
+Responsibilities
+ ● Email
+ ● SMS
+ ● Push Notifications
+ ● Notification Preferences
+
+Database 
+ ● MongoDB
+
+Reason 
+ ● Notification payloads vary in structure and are naturally represented as documents.
+
+			AI Service
+Responsibilities
+ ● Product Recommendation
+ ● Semantic Search
+ ● Chat Assistant
+ ● Review Summary
+
+Databases 
+ ● MySQL
+ ● Elasticsearch
+
+Reason 
+ ● MySQL stores operational data such as chat history, recommendation requests, and AI metadata.
+
+Elasticsearch powers:
+ ● Semantic Search
+ ● Full-text Search
+ ● Product Ranking
+ ● Recommendation Indexes
+
+
+				4.7 Communication Architecture
+***********************************************************************************************************
+Synchronous 
+ ● REST APIs
+
+Examples
+ ● Cart → Inventory
+ ● Order → Inventory
+ ● Order → Payment
+ ● Catalog → Inventory
+
+Asynchronous 
+ ● Apache Kafka
+
+Events
+ ● UserRegistered
+ ● ProductCreated
+ ● InventoryUpdated
+ ● CartUpdated
+ ● OrderCreated
+ ● PaymentCompleted
+ ● OrderCancelled
+ ● NotificationRequested
+
+
+				4.8 Database Architecture
+***********************************************************************************************************
+The platform follows the Database per Service pattern.
+
+Service							Database
+Identity						MySQL
+Catalog							MongoDB
+Inventory						PostgreSQL
+Cart							Redis
+Order							PostgreSQL
+Payment							PostgreSQL
+Notification						MongoDB
+AI							MySQL + Elasticsearch
+
+Each microservice owns its own persistence layer.
+No microservice accesses another microservice's database directly.
+All communication occurs through REST APIs or Kafka events.
+
+
+				4.9 Security Architecture
+***********************************************************************************************************
+Authentication
+ ● JWT
+
+Authorization
+ ● RBAC
+
+Roles
+ ● CUSTOMER
+ ● SELLER
+ ● ADMIN
+
+Security
+ ● BCrypt Password Encoding
+ ● HTTPS
+ ● Spring Security
+ ● API Gateway Authentication Filter
+
+
+				4.10 Event-Driven Architecture
+***********************************************************************************************************
+Kafka Topics
+ ● user-registered
+ ● product-created
+ ● inventory-updated
+ ● cart-updated
+ ● order-created
+ ● payment-success
+ ● payment-failed
+ ● order-cancelled
+ ● notification-requested
+
+
+				4.11 Caching Strategy
+***********************************************************************************************************
+Redis is used for:
+ ● Product Cache
+ ● Category Cache
+ ● Search Cache
+ ● Frequently Viewed Products
+ ● Session Cache
+
+
+				4.12 Resilience
+***********************************************************************************************************
+Implemented using Resilience4j.
+
+Features
+ ● Circuit Breaker
+ ● Retry
+ ● Timeout
+ ● Fallback
+ ● Bulkhead
+
+
+				4.13 Observability
+***********************************************************************************************************
+Logging
+ ● ELK Stack
+
+Metrics
+ ● Prometheus
+
+Dashboards
+ ● Grafana
+
+Tracing
+ ● Zipkin
+
+
+				4.14 Deployment
+***********************************************************************************************************
+Each service is deployed independently as a Docker container.
+The platform runs on Kubernetes.
+
+Infrastructure Components
+ ● API Gateway
+ ● Eureka Server
+ ● Config Server
+ ● Kafka
+ ● Redis
+ ● MySQL
+ ● PostgreSQL
+ ● MongoDB
+ ● Elasticsearch
+ ● Prometheus
+ ● Grafana
+ ● ELK Stack
+ ● Zipkin
+
+
+				4.15 Technology Stack
+***********************************************************************************************************
+Layer								Technology
+Frontend							React + TypeScript
+Backend								Spring Boot
+API Gateway							Spring Cloud Gateway
+Security							Spring Security + JWT
+Service Discovery						Eureka
+Config								Spring Cloud Config
+SQL Databases							MySQL, PostgreSQL
+NoSQL Database							MongoDB
+In-Memory Database						Redis
+Search Engine							Elasticsearch
+Messaging							Apache Kafka
+ORM								Spring Data JPA + Hibernate
+Containerization						Docker
+Orchestration							Kubernetes
+Monitoring							Prometheus + Grafana
+Logging								ELK Stack
+Distributed Tracing						Zipkin
+Testing								JUnit 5, Mockito, Testcontainers
+
+
+				4.16 Architecture Principles
+***********************************************************************************************************
+ ● Microservices Architecture
+ ● Domain-Driven Design (DDD)
+ ● Database per Service
+ ● Polyglot Persistence
+ ● Event-Driven Architecture
+ ● API Gateway Pattern
+ ● Stateless Services
+ ● Independent Deployment
+ ● Horizontal Scalability
+ ● Loose Coupling
+ ● High Cohesion
+ ● SOLID Principles
+ ● Twelve-Factor App Methodology

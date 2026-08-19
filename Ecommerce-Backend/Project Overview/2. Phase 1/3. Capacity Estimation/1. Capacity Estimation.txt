@@ -1,0 +1,229 @@
+3. CAPACITY ESTIMATION
+			3.1 Assumptions
+***********************************************************************************************************
+Parameter					Value
+Registered Users				1,000,000
+Daily Active Users (DAU)			100,000
+Peak Concurrent Users				10,000
+Products					500,000
+Categories					2,000
+Brands						5,000
+Orders per Day					50,000
+Payments per Day				45,000
+Reviews per Day					8,000
+Notifications per Day				300,000
+Average Cart Size				5 Products
+Average Product Images				5 Images
+
+			3.2 Traffic Estimation
+***********************************************************************************************************
+			User Requests
+Operation					Daily Requests
+Login						80,000
+Product Search					1,500,000
+Product View					2,000,000
+Add to Cart					250,000
+Checkout					60,000
+Place Order					50,000
+Payment						45,000
+Review Product					8,000
+
+		Average Requests Per Second (RPS)
+Formula for Requests Per Second = Daily Requests / 86400*****
+Operation					Average RPS
+Login						1
+Search						17
+Product View					23
+Add to Cart					3
+Checkout					1
+Place Order					1
+Payment						1
+
+		Peak Requests Per Second
+Assuming peak traffic is 5× average traffic.
+Operation					Average RPS
+Login						5
+Search						85
+Product View					115
+Add to Cart					15
+Checkout					5
+Place Order					5
+Payment						5
+
+			3.3 Storage Estimation
+***********************************************************************************************************
+		User Table
+Estimated size per user
+Field					Size
+User ID					8 Bytes
+Username				50 Bytes
+Email					100 Bytes
+Password Hash				60 Bytes
+Other Fields				300 Bytes
+Approximate size : 500 Bytes/User
+For 1,000,000 Users
+Total ≈ 500 MB
+
+		Product Table
+Approximate size : 1 KB/Product
+For
+500,000 Products ≈ 500 MB
+
+		Product Images
+Average image size : 500 KB
+Average images : 5/Product
+Total Images : 500,000 × 5 = 2,500,000 Images
+Storage : 2,500,000 × 500 KB ≈ 1.25 TB
+
+		Orders
+Estimated Order Size : 2 KB
+Daily : 50,000 Orders, 100 MB/day
+Yearly ≈ 36 GB
+
+		Reviews
+Estimated Review Size : 1 KB, 8,000 Reviews/day ≈ 8 MB/day ≈ 3 GB/year
+
+		Notification Logs
+Average : 500 Bytes, 300,000 Notifications/day ≈ 150 MB/day ≈ 55 GB/year
+
+		Estimated Database Size
+Component				Storage
+Users					500 MB
+Products				500 MB
+Categories				20 MB
+Brands					10 MB
+Orders					36 GB/year
+Payments				20 GB/year
+Reviews					3 GB/year
+Notifications				55 GB/year
+Inventory				200 MB
+
+			3.4 Cache Estimation
+***********************************************************************************************************
+		Frequently Cached Data
+ ● Product Details
+ ● Product Categories
+ ● Brands
+ ● Popular Products
+ ● Search Results
+
+		Estimated Cache
+Item					Size
+Product Cache				1 GB
+Search Cache				500 MB
+Session Cache				1 GB
+Cart Cache				2 GB
+Total Redis Memory ≈ 5 GB
+
+			3.5 Network Bandwidth
+***********************************************************************************************************
+Average API Response = 20 KB
+Peak RPS = 250 RPS
+Bandwidth : 250 × 20 KB = 5 MB/sec, ≈40 Mbps
+Round up : 100 Mbps to accommodate traffic spikes.
+
+			3.6 Database Connections
+***********************************************************************************************************
+		Expected Peak
+Service					Connections
+Identity				50
+Catalog					150
+Inventory				50
+Cart					50
+Order					100
+Payment					50
+Notification				30
+AI					20
+Total ≈ 500 Connections
+Use connection pooling (e.g., HikariCP).
+
+			3.7 Message Queue Capacity
+***********************************************************************************************************
+		Kafka Events
+Event					Daily Events
+User Registered				10,000
+Product Created				2,000
+Inventory Updated			50,000
+Cart Updated				250,000
+Order Created				50,000
+Payment Success				45,000
+Order Cancelled				5,000
+Notification Sent			300,000
+Total ≈ 712,000 Events/day
+Peak ≈ 20 Events/sec
+
+			3.8 Compute Resources
+***********************************************************************************************************
+		Development Environment
+Component		CPU		RAM
+API Gateway		1 Core		1 GB
+Identity		1 Core		1 GB
+Catalog			2 Core		2 GB
+Inventory		1 Core		1 GB
+Cart			1 Core		1 GB
+Order			2 Core		2 GB
+Payment			1 Core		1 GB
+Notification		1 Core		1 GB
+AI			2 Core		2 GB
+MySQL			4 Core		8 GB
+Redis			2 Core		4 GB
+Kafka			2 Core		4 GB
+CPU: 18 vCPUs
+RAM: 29 GB
+
+		Production Environment
+Component	Replicas	CPU/Replica	RAM/Replica
+API Gateway	3		2 Core		2 GB
+Identity	3		2 Core		2 GB
+Catalog		5		4 Core		4 GB
+Inventory	3		2 Core		2 GB
+Cart		3		2 Core		2 GB
+Order		4		4 Core		4 GB
+Payment		3		2 Core		2 GB
+Notification	2		2 Core		2 GB
+AI		3		4 Core		4 GB
+
+			3.9 High Traffic Components
+***********************************************************************************************************
+Ranked by expected load:
+ ● Catalog Service
+ ● Search API
+ ● Redis Cache
+ ● Inventory Service
+ ● Order Service
+ ● Payment Service
+ ● Notification Service
+
+			3.10 Scaling Strategy
+***********************************************************************************************************
+Component				Scaling Strategy
+API Gateway				Horizontal
+Identity				Horizontal
+Catalog					Horizontal + Redis Cache
+Inventory				Horizontal
+Cart					Horizontal + Redis
+Order					Horizontal
+Payment					Horizontal
+Notification				Kafka Consumers
+AI					Horizontal
+MySQL					Primary + Read Replicas
+Redis					Redis Cluster
+Kafka					Multiple Brokers
+
+			Capacity Estimation Summary
+***********************************************************************************************************
+Metric					Estimated Value
+Registered Users			1,000,000
+Daily Active Users			100,000
+Peak Concurrent Users			10,000
+Products				500,000
+Orders per Day				50,000
+Peak Search RPS				85
+Peak Product View RPS			115
+Peak Total API RPS			~250
+Database Growth				~120 GB/year (excluding images)
+Product Image Storage			~1.25 TB
+Redis Cache				~5 GB
+Kafka Events				~712,000/day
+Database Connections			~500
+Recommended Network Bandwidth		≥100 Mbps

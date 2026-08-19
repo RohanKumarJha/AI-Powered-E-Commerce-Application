@@ -1,0 +1,76 @@
+inventory-service
+│
+├── config
+│
+├── controller
+│   └── InventoryController
+│
+├── dto
+│   ├── request
+│   │   ├── InventoryRequest
+│   │   ├── UpdateInventoryRequest
+│   │   └── UpdateStockRequest
+│   │
+│   └── response
+│       ├── InventoryResponse
+│       ├── ExceptionResponse
+│       └── PageResponse<T>
+│
+├── exception
+│
+├── factory
+│   └── InventoryFactory
+│
+├── mapper
+│   └── InventoryMapper
+│
+├── model
+│   └── Inventory
+│
+├── repository
+│   └── InventoryRepository
+│
+├── service
+│   ├── InventoryService
+│   └── impl
+│       └── InventoryServiceImpl
+│
+└── util
+    ├── PageRequestUtil
+    ├── PageResponseUtil
+    └── UserContext
+
+
+********************************************************************************************
+InventoryService
+initializeStock(Long productId);
+
+addStock(Long productId, Integer quantity);
+
+deductStock(Long productId, Integer quantity);
+
+reserveStock(Long productId, Integer quantity);
+
+releaseStock(Long productId, Integer quantity);
+
+confirmStock(Long productId, Integer quantity);
+
+validateStock(Long productId, Integer quantity);
+
+getInventory(Long productId);
+
+getAllInventories();
+
+
+********************************************************************************************
+	Inventory
+inventoryId
+productId              // Reference to Catalog Service
+sku                    // Product SKU snapshot (optional)
+availableQuantity
+reservedQuantity
+soldQuantity
+minimumStockLevel      // Low stock threshold
+active                 // Inventory enabled/disabled
+createdAt
+updatedAt
