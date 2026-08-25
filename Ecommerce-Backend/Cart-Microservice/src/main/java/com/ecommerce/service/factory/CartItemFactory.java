@@ -7,7 +7,7 @@ import com.ecommerce.model.Cart;
 import com.ecommerce.model.CartItem;
 import com.ecommerce.repository.CartItemRepository;
 import com.ecommerce.repository.CartRepository;
-import com.ecommerce.client.catelog.CatalogClient;
+import com.ecommerce.client.catalog.CatalogClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

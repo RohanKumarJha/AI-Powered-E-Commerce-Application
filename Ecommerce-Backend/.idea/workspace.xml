@@ -6,13 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="6210e82f-603b-4863-8054-bad82b7894c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AI-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AI-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/AI-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catelog/CatalogClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catalog/CatalogClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catelog/MockCatalogClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catalog/MockCatalogClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/config/ModelMapperConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/factory/CartItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/factory/CartItemFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Identity-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notification-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Notification-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Notification-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Payment-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Payment-Microservice/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +62,7 @@
     &quot;Spring Boot.AiMicroserviceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.CartMicroserviceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.CatalogMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaMicroserviceApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.EurekaMicroserviceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.IdentityMicroserviceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.InventoryMicroserviceApplication.executor&quot;: &quot;Run&quot;,
@@ -64,7 +80,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
-  <component name="RunManager" selected="Spring Boot.EurekaMicroserviceApplication">
+  <component name="RunManager" selected="Spring Boot.AiMicroserviceApplication">
     <configuration name="AiMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="AI-Microservice" />
@@ -79,24 +95,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EurekaMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="CartMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="Eureka-Microservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.eureka.EurekaMicroserviceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.eureka.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IdentityMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="Identity-Microservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.IdentityMicroserviceApplication" />
+      <module name="Cart-Microservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.CartMicroserviceApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ecommerce.*" />
@@ -111,6 +113,20 @@
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="Notification-Microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.NotificationMicroserviceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ecommerce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="Order-Microservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.OrderMicroserviceApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ecommerce.*" />
@@ -137,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EurekaMicroserviceApplication" />
-        <item itemvalue="Spring Boot.IdentityMicroserviceApplication" />
         <item itemvalue="Spring Boot.AiMicroserviceApplication" />
         <item itemvalue="Spring Boot.PaymentMicroserviceApplication" />
         <item itemvalue="Spring Boot.NotificationMicroserviceApplication" />
+        <item itemvalue="Spring Boot.OrderMicroserviceApplication" />
+        <item itemvalue="Spring Boot.CartMicroserviceApplication" />
       </list>
     </recent_temporary>
   </component>

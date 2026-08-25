@@ -1,4 +1,4 @@
-package com.ecommerce.client.catelog;
+package com.ecommerce.client.catalog;
 
 import com.ecommerce.client.product.ProductResponse;
 import org.springframework.stereotype.Service;
