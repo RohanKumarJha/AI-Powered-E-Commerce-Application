@@ -1,0 +1,63 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: API-Gateway
+
+  cloud:
+    gateway:
+
+      discover:
+        locator:
+          enabled: true
+          lower-case-service-id: false
+      routes:
+        - id: ai-service
+          uri: lb://AI-MICROSERVICE
+          predicates:
+            - Path=/api/v1/ai/**
+
+        - id: identity-service
+          uri: lb://IDENTITY-MICROSERVICE
+          predicates:
+            - Path=/api/v1/users/**,/api/v1/roles/**,/api/v1/addresses/**
+
+        - id: catalog-service
+          uri: lb://CATALOG-MICROSERVICE
+          predicates:
+            - Path=/api/v1/brands/**,/api/v1/categories/**,/api/v1/products/**,/api/v1/reviews/**
+
+        - id: inventory-service
+          uri: lb://INVENTORY-MICROSERVICE
+          predicates:
+            - Path=/api/v1/inventories/**
+
+        - id: cart-service
+          uri: lb://CART-MICROSERVICE
+          predicates:
+            - Path=/api/v1/carts/**,/api/v1/cart-items/**
+
+        - id: order-service
+          uri: lb://ORDER-MICROSERVICE
+          predicates:
+            - Path=/api/v1/orders/**
+
+        - id: payment-service
+          uri: lb://PAYMENT-MICROSERVICE
+          predicates:
+            - Path=/api/v1/payments/**
+
+        - id: notification-service
+          uri: lb://NOTIFICATION-MICROSERVICE
+          predicates:
+            - Path=/api/v1/notifications/**,/api/v1/notification-preferences/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}

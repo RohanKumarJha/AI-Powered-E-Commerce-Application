@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/Payment-Microservice/pom.xml" />
         <option value="$PROJECT_DIR$/AI-Microservice/pom.xml" />
         <option value="$PROJECT_DIR$/Eureka-Microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/API-Gateway/pom.xml" />
       </list>
     </option>
   </component>

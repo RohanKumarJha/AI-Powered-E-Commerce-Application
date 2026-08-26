@@ -6,28 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6210e82f-603b-4863-8054-bad82b7894c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AI-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AI-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/AI-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catelog/CatalogClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catalog/CatalogClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catelog/MockCatalogClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/client/catalog/MockCatalogClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/config/ModelMapperConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/config/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/factory/CartItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/factory/CartItemFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notification-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Notification-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notification-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Notification-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Payment-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Payment-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Payment-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Payment-Microservice/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,35 +33,36 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AiMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CartMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.CatalogMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EurekaMicroserviceApplication (1).executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EurekaMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.IdentityMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.InventoryMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.NotificationMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.OrderMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.PaymentMicroserviceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/AI-Powered-E-Commerce-Application/Ecommerce-Backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.AiMicroserviceApplication.executor": "Run",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.CartMicroserviceApplication.executor": "Run",
+    "Spring Boot.CatalogMicroserviceApplication.executor": "Run",
+    "Spring Boot.EurekaMicroserviceApplication (1).executor": "Run",
+    "Spring Boot.EurekaMicroserviceApplication.executor": "Run",
+    "Spring Boot.IdentityMicroserviceApplication.executor": "Run",
+    "Spring Boot.InventoryMicroserviceApplication.executor": "Run",
+    "Spring Boot.NotificationMicroserviceApplication.executor": "Run",
+    "Spring Boot.OrderMicroserviceApplication.executor": "Run",
+    "Spring Boot.PaymentMicroserviceApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/AI-Powered-E-Commerce-Application/Ecommerce-Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
-  <component name="RunManager" selected="Spring Boot.AiMicroserviceApplication">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
     <configuration name="AiMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
       <module name="AI-Microservice" />
@@ -95,10 +77,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CartMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="Cart-Microservice" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.CartMicroserviceApplication" />
+      <module name="API-Gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ecommerce.ApiGatewayApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ecommerce.*" />
@@ -153,11 +135,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ApiGatewayApplication" />
         <item itemvalue="Spring Boot.AiMicroserviceApplication" />
-        <item itemvalue="Spring Boot.PaymentMicroserviceApplication" />
         <item itemvalue="Spring Boot.NotificationMicroserviceApplication" />
+        <item itemvalue="Spring Boot.PaymentMicroserviceApplication" />
         <item itemvalue="Spring Boot.OrderMicroserviceApplication" />
-        <item itemvalue="Spring Boot.CartMicroserviceApplication" />
       </list>
     </recent_temporary>
   </component>
