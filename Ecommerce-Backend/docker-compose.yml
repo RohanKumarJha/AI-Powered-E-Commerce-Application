@@ -1,0 +1,61 @@
+services:
+
+  eureka-service:
+    image: eureka-microservice:v1
+    container_name: eureka-service
+    ports:
+      - "8761:8761"
+
+  identity-service:
+    image: identity-microservice:v1
+    container_name: identity-service
+    ports:
+      - "8081:8081"
+
+  catalog-service:
+    image: catalog-microservice:v1
+    container_name: catalog-service
+    ports:
+      - "8082:8082"
+
+  inventory-service:
+    image: inventory-microservice:v1
+    container_name: inventory-service
+    ports:
+      - "8083:8083"
+
+  cart-service:
+    image: cart-microservice:v1
+    container_name: cart-service
+    ports:
+      - "8084:8084"
+
+  order-service:
+    image: order-microservice:v1
+    container_name: order-service
+    ports:
+      - "8085:8085"
+
+  payment-service:
+    image: payment-microservice:v1
+    container_name: payment-service
+    ports:
+      - "8086:8086"
+
+  notification-service:
+    image: notification-microservice:v1
+    container_name: notification-service
+    ports:
+      - "8087:8087"
+
+  ai-service:
+    image: ai-microservice:v1
+    container_name: ai-service
+    ports:
+      - "8088:8088"
+
+  api-gateway:
+    image: api-gateway:v1
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
