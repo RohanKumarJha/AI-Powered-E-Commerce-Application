@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6210e82f-603b-4863-8054-bad82b7894c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API-Gateway/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/AI-Microservice/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/API-Gateway/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eureka-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Eureka-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Notification-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Order-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Payment-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Payment-Microservice/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,49 +49,49 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.docker-compose.yml.eureka-service: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "JAR Application.Eureka-Microservice-0.0.1-SNAPSHOT.jar.executor": "Run",
-    "JAR Application.Identity-Microservice-0.0.1-SNAPSHOT.jar.executor": "Run",
-    "Maven.AI-Microservice [package].executor": "Run",
-    "Maven.API-Gateway [package].executor": "Run",
-    "Maven.Cart-Microservice [package].executor": "Run",
-    "Maven.Catalog-Microservice [package].executor": "Run",
-    "Maven.Eureka-Microservice [package].executor": "Run",
-    "Maven.Identity-Microservice [package].executor": "Run",
-    "Maven.Inventory-Microservice [package].executor": "Run",
-    "Maven.Notification-Microservice [package].executor": "Run",
-    "Maven.Order-Microservice [package].executor": "Run",
-    "Maven.Payment-Microservice [package].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AiMicroserviceApplication.executor": "Run",
-    "Spring Boot.ApiGatewayApplication.executor": "Run",
-    "Spring Boot.CartMicroserviceApplication.executor": "Run",
-    "Spring Boot.CatalogMicroserviceApplication.executor": "Run",
-    "Spring Boot.EurekaMicroserviceApplication (1).executor": "Run",
-    "Spring Boot.EurekaMicroserviceApplication.executor": "Run",
-    "Spring Boot.IdentityMicroserviceApplication.executor": "Run",
-    "Spring Boot.InventoryMicroserviceApplication.executor": "Run",
-    "Spring Boot.NotificationMicroserviceApplication.executor": "Run",
-    "Spring Boot.OrderMicroserviceApplication.executor": "Run",
-    "Spring Boot.PaymentMicroserviceApplication.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/AI-Powered-E-Commerce-Application/Ecommerce-Backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.docker-compose.yml.eureka-service: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Eureka-Microservice-0.0.1-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Identity-Microservice-0.0.1-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.AI-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.API-Gateway [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Cart-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Catalog-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Eureka-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Identity-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Inventory-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Notification-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Order-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Payment-Microservice [package].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AiMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CartMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CatalogMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaMicroserviceApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.IdentityMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.InventoryMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.OrderMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.PaymentMicroserviceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/AI-Powered-E-Commerce-Application/Ecommerce-Backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="Eureka-Microservice-0.0.1-SNAPSHOT.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/Eureka-Microservice/target/Eureka-Microservice-0.0.1-SNAPSHOT.jar" />
@@ -111,7 +116,9 @@
       </method>
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
