@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -28,6 +29,7 @@ public class InventoryServiceImpl implements InventoryService {
     private final InventoryMapper inventoryMapper;
 
     @Override
+    @Transactional
     public InventoryResponse createInventory(InventoryRequest request) {
         Inventory inventory = inventoryFactory.create(request);
         Long userId = UserContext.getCurrentUserId();
@@ -82,6 +84,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    @Transactional
     public InventoryResponse updateInventory(
             Long inventoryId,
             UpdateInventoryRequest request) {
@@ -105,6 +108,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    @Transactional
     public InventoryResponse updateStock(
             Long inventoryId,
             UpdateStockRequest request) {
@@ -123,6 +127,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
+    @Transactional
     public void deleteInventory(Long inventoryId) {
         Inventory inventory =
                 inventoryFactory.getById(inventoryId);

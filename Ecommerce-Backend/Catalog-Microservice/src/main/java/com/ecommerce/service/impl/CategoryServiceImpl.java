@@ -12,6 +12,7 @@ import com.ecommerce.security.UserContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryMapper categoryMapper;
 
     @Override
+    @Transactional
     public CategoryResponse createCategory(CategoryRequest request) {
         Category category = categoryFactory.createCategory(request);
         Long userId = UserContext.getCurrentUserId();
@@ -36,6 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public CategoryResponse updateCategory(Long categoryId, CategoryRequest request) {
         Category category = categoryFactory.getCategoryById(categoryId);
         categoryFactory.validateCategoryNameForUpdate(categoryId, request.getName());
@@ -59,6 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public void deleteCategory(Long categoryId) {
         Category category = categoryFactory.getCategoryById(categoryId);
         boolean hasChildCategories =

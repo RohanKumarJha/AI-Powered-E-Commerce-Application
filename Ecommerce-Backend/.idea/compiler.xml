@@ -21,10 +21,9 @@
         <module name="Notification-Microservice" />
         <module name="AI-Microservice" />
         <module name="Order-Microservice" />
-        <module name="Cart-Microservice" />
         <module name="Payment-Microservice" />
       </profile>
-      <profile name="Annotation profile for Inventory-Microservice" enabled="true">
+      <profile name="Annotation profile for Cart-Microservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -32,8 +31,9 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
         <module name="Catalog-Microservice" />
-        <module name="Identity-Microservice" />
         <module name="Inventory-Microservice" />
+        <module name="Identity-Microservice" />
+        <module name="Cart-Microservice" />
       </profile>
     </annotationProcessing>
   </component>

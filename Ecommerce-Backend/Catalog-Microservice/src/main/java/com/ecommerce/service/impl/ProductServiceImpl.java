@@ -25,6 +25,7 @@ import com.ecommerce.util.PageResponseUtil;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductImageRepository productImageRepository;
 
     @Override
+    @Transactional
     public ProductResponse createProduct(ProductRequest request) {
         Product product = productFactory.create(request);
         Long userId = UserContext.getCurrentUserId();
@@ -55,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ProductResponse updateProduct(Long productId, ProductRequest request) {
         Product product = productFactory.getProductById(productId);
         productFactory.validateSkuForUpdate(productId, request.getSku());
@@ -69,6 +72,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void deleteProduct(Long productId) {
         Product product = productFactory.getProductById(productId);
         productRepository.delete(product);
@@ -167,6 +171,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public ProductImageResponse uploadProductImage(Long productId,
                                                    ProductImageRequest request) {
         ProductImage productImage =
@@ -183,6 +188,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void deleteProductImage(Long imageId) {
         ProductImage productImage =
                 productImageFactory.getProductImageById(imageId);

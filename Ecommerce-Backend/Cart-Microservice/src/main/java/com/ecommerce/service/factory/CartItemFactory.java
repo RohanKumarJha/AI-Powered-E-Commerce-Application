@@ -1,13 +1,12 @@
 package com.ecommerce.service.factory;
 
+import com.ecommerce.client.catalog.CatalogClient;
 import com.ecommerce.client.product.ProductResponse;
 import com.ecommerce.dto.request.CartItemRequest;
 import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.Cart;
 import com.ecommerce.model.CartItem;
-import com.ecommerce.repository.CartItemRepository;
 import com.ecommerce.repository.CartRepository;
-import com.ecommerce.client.catalog.CatalogClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -20,11 +19,11 @@ import java.math.BigDecimal;
 public class CartItemFactory {
 
     private final CartRepository cartRepository;
-    private final CartItemRepository cartItemRepository;
     private final CatalogClient catalogClient;
 
     public Cart getCartById(Long cartId) {
         log.debug("Fetching cart with ID: {}", cartId);
+
         return cartRepository.findById(cartId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
@@ -34,9 +33,19 @@ public class CartItemFactory {
                         ));
     }
 
-    public CartItem getCartItemById(Long cartItemId) {
-        log.debug("Fetching cart item with ID: {}", cartItemId);
-        return cartItemRepository.findById(cartItemId)
+    public CartItem getCartItemById(Long cartId, Long cartItemId) {
+        log.debug(
+                "Fetching cart item with ID: {} from cart ID: {}",
+                cartItemId,
+                cartId
+        );
+
+        Cart cart = getCartById(cartId);
+
+        return cart.getCartItems()
+                .stream()
+                .filter(item -> item.getCartItemId().equals(cartItemId))
+                .findFirst()
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
                                 "Cart Item",
@@ -48,17 +57,26 @@ public class CartItemFactory {
     public CartItem createCartItem(
             Cart cart,
             CartItemRequest request) {
-        log.debug("Creating cart item for cart ID: {} and product ID: {}",
+
+        log.debug(
+                "Creating cart item for cart ID: {} and product ID: {}",
                 cart.getCartId(),
-                request.getProductId());
-        log.debug("Fetching product details from Catalog Service for product ID: {}",
-                request.getProductId());
+                request.getProductId()
+        );
+
+        log.debug(
+                "Fetching product details from Catalog Service for product ID: {}",
+                request.getProductId()
+        );
+
         ProductResponse product =
                 catalogClient.getProductById(request.getProductId());
+
         BigDecimal lineTotal = product.getSpecialPrice()
                 .multiply(BigDecimal.valueOf(request.getQuantity()));
+
         CartItem cartItem = CartItem.builder()
-                .cart(cart)
+                .cartItemId(System.currentTimeMillis())
                 .productId(product.getProductId())
                 .productNameSnapshot(product.getName())
                 .skuSnapshot(product.getSku())
@@ -69,8 +87,12 @@ public class CartItemFactory {
                 .quantity(request.getQuantity())
                 .lineTotal(lineTotal)
                 .build();
-        log.debug("Cart item entity created successfully for product ID: {}",
-                product.getProductId());
+
+        log.debug(
+                "Cart item created successfully for product ID: {}",
+                product.getProductId()
+        );
+
         return cartItem;
     }
 }

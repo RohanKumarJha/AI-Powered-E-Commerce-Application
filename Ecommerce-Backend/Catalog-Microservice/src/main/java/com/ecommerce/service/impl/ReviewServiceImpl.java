@@ -12,6 +12,7 @@ import com.ecommerce.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final ReviewMapper reviewMapper;
 
     @Override
+    @Transactional
     public ReviewResponse addReview(Long productId, ReviewRequest request) {
         Product product = reviewFactory.getProduct(productId);
 
@@ -56,6 +58,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    @Transactional
     public ReviewResponse updateReview(
             Long reviewId,
             ReviewRequest request) {
@@ -84,6 +87,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    @Transactional
     public void deleteReview(Long reviewId) {
         Review review = reviewFactory.getReview(reviewId);
 

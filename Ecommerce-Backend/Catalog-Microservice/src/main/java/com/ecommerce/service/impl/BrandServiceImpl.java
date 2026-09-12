@@ -13,6 +13,7 @@ import com.ecommerce.security.UserContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class BrandServiceImpl implements BrandService {
     private final BrandReferenceService brandReferenceService;
 
     @Override
+    @Transactional
     public BrandResponse createBrand(BrandRequest request) {
 
         Brand brand = brandFactory.create(request);
@@ -40,6 +42,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional
     public BrandResponse updateBrand(Long brandId, BrandRequest request) {
 
         Brand brand = brandFactory.getById(brandId);
@@ -58,6 +61,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    @Transactional
     public void deleteBrand(Long brandId) {
 
         Brand brand = brandFactory.getById(brandId);

@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6210e82f-603b-4863-8054-bad82b7894c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/db/migration/V1__create_inventory_schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/model/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/model/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/repository/CartItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/repository/CartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/repository/CartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/factory/CartItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/factory/CartItemFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/impl/CartItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/impl/CartItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/java/com/ecommerce/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Cart-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/BrandServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/BrandServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory-Microservice/src/main/java/com/ecommerce/service/impl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory-Microservice/src/main/java/com/ecommerce/service/impl/InventoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

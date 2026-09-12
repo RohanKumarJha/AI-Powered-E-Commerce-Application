@@ -108,6 +108,16 @@ services:
     container_name: cart-service
     ports:
       - "8084:8084"
+    depends_on:
+      cart-redis:
+        condition: service_started
+
+  cart-redis:
+    image: redis:7
+    container_name: cart-redis
+    restart: unless-stopped
+    ports:
+      - "${CART_REDIS_PORT}:6379"
 
   order-service:
     image: order-microservice:v1
