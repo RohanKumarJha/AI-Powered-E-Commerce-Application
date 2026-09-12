@@ -6,6 +6,7 @@ import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.mapper.BrandMapper;
 import com.ecommerce.model.Brand;
 import com.ecommerce.repository.BrandRepository;
+import com.ecommerce.service.MongoSequenceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -17,15 +18,26 @@ public class BrandFactory {
 
     private final BrandRepository brandRepository;
     private final BrandMapper brandMapper;
+    private final MongoSequenceService mongoSequenceService;
 
     public Brand create(BrandRequest request) {
         log.debug("Creating brand entity.");
+
         validateDuplicateBrandName(request.getName());
-        return brandMapper.toEntity(request);
+
+        Brand brand = brandMapper.toEntity(request);
+
+        Long brandId =
+                mongoSequenceService.getNextSequence("brands");
+
+        brand.setBrandId(brandId);
+
+        return brand;
     }
 
     public Brand getById(Long brandId) {
         log.debug("Fetching brand entity with id: {}", brandId);
+
         return brandRepository.findById(brandId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
@@ -37,6 +49,7 @@ public class BrandFactory {
 
     public void validateDuplicateBrandName(String name) {
         log.debug("Validating duplicate brand name.");
+
         if (brandRepository.existsByNameIgnoreCase(name)) {
             throw new ResourceAlreadyExistsException(
                     "Brand",
@@ -46,12 +59,24 @@ public class BrandFactory {
         }
     }
 
-    public void validateBrandNameForUpdate(Long brandId, String name) {
-        log.debug("Validating brand name for update. Brand id: {}", brandId);
+    public void validateBrandNameForUpdate(
+            Long brandId,
+            String name) {
+
+        log.debug(
+                "Validating brand name for update. Brand id: {}",
+                brandId
+        );
+
         brandRepository.findByNameIgnoreCase(name)
                 .ifPresent(existingBrand -> {
+
                     if (!existingBrand.getBrandId().equals(brandId)) {
-                        log.warn("Brand already exists with name: {}", name);
+                        log.warn(
+                                "Brand already exists with name: {}",
+                                name
+                        );
+
                         throw new ResourceAlreadyExistsException(
                                 "Brand",
                                 "name",

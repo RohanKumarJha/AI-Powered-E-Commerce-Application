@@ -5,6 +5,7 @@ import com.ecommerce.dto.request.ProductImageRequest;
 import com.ecommerce.dto.request.ProductRequest;
 import com.ecommerce.dto.response.ProductImageResponse;
 import com.ecommerce.dto.response.ProductResponse;
+import com.ecommerce.repository.ProductQueryRepository;
 import com.ecommerce.service.factory.ProductFactory;
 import com.ecommerce.service.factory.ProductImageFactory;
 import com.ecommerce.mapper.ProductImageMapper;
@@ -15,7 +16,6 @@ import com.ecommerce.repository.ProductImageRepository;
 import com.ecommerce.repository.ProductRepository;
 import com.ecommerce.service.ProductService;
 import com.ecommerce.dto.response.PageResponse;
-import com.ecommerce.specification.ProductSpecification;
 import com.ecommerce.security.UserContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,12 +33,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository productRepository;
-    private final ProductImageRepository productImageRepository;
     private final ProductFactory productFactory;
     private final ProductImageFactory productImageFactory;
     private final ProductMapper productMapper;
     private final ProductImageMapper productImageMapper;
+    private final ProductRepository productRepository;
+    private final ProductQueryRepository productQueryRepository;
+    private final ProductImageRepository productImageRepository;
 
     @Override
     public ProductResponse createProduct(ProductRequest request) {
@@ -58,8 +59,8 @@ public class ProductServiceImpl implements ProductService {
         Product product = productFactory.getProductById(productId);
         productFactory.validateSkuForUpdate(productId, request.getSku());
         productMapper.updateFromRequest(request, product);
-        product.setCategory(productFactory.getCategoryById(request.getCategoryId()));
-        product.setBrand(productFactory.getBrandById(request.getBrandId()));
+        product.setCategoryId(request.getCategoryId());
+        product.setBrandId(request.getBrandId());
         product.setSpecialPrice(request.getPrice().subtract(request.getDiscount()));
         product.setUpdatedBy(UserContext.getCurrentUserId());
         Product saveproduct = productRepository.save(product);
@@ -127,18 +128,21 @@ public class ProductServiceImpl implements ProductService {
             Integer size,
             String sortBy,
             String sortDir) {
+
         Page<ProductResponse> result =
-                productRepository
-                        .findAll(
-                                ProductSpecification.filter(request),
+                productQueryRepository
+                        .filterProducts(
+                                request,
                                 PageRequestUtil.createPageRequest(
                                         page,
                                         size,
                                         sortBy,
                                         sortDir))
                         .map(productMapper::toResponse);
+
         log.info("Product filtering completed. Total matching products: {}",
                 result.getTotalElements());
+
         return PageResponseUtil.from(result);
     }
 

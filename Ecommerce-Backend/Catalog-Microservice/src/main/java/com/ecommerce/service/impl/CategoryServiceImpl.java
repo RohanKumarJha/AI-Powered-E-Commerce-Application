@@ -48,9 +48,9 @@ public class CategoryServiceImpl implements CategoryService {
                         "Category cannot be its own parent."
                 );
             }
-            category.setParentCategory(parentCategory);
+            category.setParentCategoryId(request.getParentCategoryId());
         } else {
-            category.setParentCategory(null);
+            category.setParentCategoryId(null);
         }
         category.setUpdatedBy(UserContext.getCurrentUserId());
         Category saveCategory = categoryRepository.save(category);
@@ -62,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteCategory(Long categoryId) {
         Category category = categoryFactory.getCategoryById(categoryId);
         boolean hasChildCategories =
-                categoryRepository.existsByParentCategoryCategoryId(categoryId);
+                categoryRepository.existsByParentCategoryId(categoryId);
         if (hasChildCategories) {
             throw new BadRequestException(
                     "Cannot delete category because child categories are referring to this parent category."

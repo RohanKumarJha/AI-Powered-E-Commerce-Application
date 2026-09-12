@@ -5,14 +5,9 @@ spring:
   application:
     name: Catalog-Microservice
 
-  datasource:
-    url: jdbc:h2:mem:testdb
-  h2:
-    console:
-      enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: update
+  data:
+    mongodb:
+      uri: mongodb://${CATALOG_MONGO_USERNAME}:${CATALOG_MONGO_PASSWORD}@${CATALOG_MONGO_HOST:catalog-mongodb}:${CATALOG_MONGO_PORT:27017}/${CATALOG_MONGO_DATABASE}?authSource=admin
 
 eureka:
   client:

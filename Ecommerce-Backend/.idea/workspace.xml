@@ -5,15 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6210e82f-603b-4863-8054-bad82b7894c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/db/migration/V1__create_identity_schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ProductQueryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ProductQueryRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/MongoSequenceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity-Microservice/src/main/java/com/ecommerce/service/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/java/com/ecommerce/service/impl/AddressServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity-Microservice/src/main/java/com/ecommerce/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/java/com/ecommerce/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Identity-Microservice/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/model/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/BrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/BrandRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ProductImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ProductImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/BrandFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/BrandFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/CategoryFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/CategoryFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/ProductFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/ProductFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/ProductImageFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/ProductImageFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/ReviewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/factory/ReviewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/service/impl/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/java/com/ecommerce/specification/ProductSpecification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Catalog-Microservice/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +44,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>

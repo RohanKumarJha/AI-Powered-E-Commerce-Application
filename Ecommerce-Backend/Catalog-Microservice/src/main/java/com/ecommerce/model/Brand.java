@@ -1,25 +1,24 @@
 package com.ecommerce.model;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "brands")
+@Document(collection = "brands")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Brand {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long brandId;
 
-    @Column(nullable = false, unique = true)
     private String name;
 
     private String description;
@@ -31,31 +30,14 @@ public class Brand {
     @Builder.Default
     private Boolean active = true;
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL,orphanRemoval = true)
     @Builder.Default
-    private Set<Product> products = new HashSet<>();
+    private Set<Long> productIds = new HashSet<>();
 
-    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false, updatable = false)
     private Long createdBy;
 
-    @Column(nullable = false)
     private Long updatedBy;
-
-    @PrePersist
-    public void prePersist() {
-        createdAt = LocalDateTime.now();
-        updatedAt = createdAt;
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }
-

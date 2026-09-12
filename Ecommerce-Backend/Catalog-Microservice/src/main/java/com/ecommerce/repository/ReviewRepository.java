@@ -1,16 +1,15 @@
 package com.ecommerce.repository;
 
-import com.ecommerce.model.Product;
 import com.ecommerce.model.Review;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<Review, Long> {
+public interface ReviewRepository extends MongoRepository<Review, Long> {
 
-    boolean existsByProductAndUserId(Product product, Long userId);
+    boolean existsByProductIdAndUserId(Long productId, Long userId);
 
-    List<Review> findByProduct(Product product);
+    List<Review> findByProductId(Long productId);
 }

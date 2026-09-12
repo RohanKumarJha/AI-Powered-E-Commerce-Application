@@ -18,19 +18,20 @@ public class CategoryMapper {
     }
 
     public CategoryResponse toResponse(Category category) {
-        CategoryResponse response = modelMapper.map(category, CategoryResponse.class);
-        if (category.getParentCategory() != null) {
-            response.setParentCategoryId(category.getParentCategory().getCategoryId());
+        CategoryResponse response =
+                modelMapper.map(category, CategoryResponse.class);
+
+        if (category.getParentCategoryId() != null) {
+            response.setParentCategoryId(category.getParentCategoryId());
         }
+
         return response;
     }
 
-    public void updateFromRequest(CategoryRequest request, Category category) {
-        category.setName(request.getName());
-        category.setDescription(request.getDescription());
-        category.setImageUrl(request.getImageUrl());
-        if (request.getActive() != null) {
-            category.setActive(request.getActive());
-        }
+    public void updateFromRequest(
+            CategoryRequest request,
+            Category category) {
+
+        modelMapper.map(request, category);
     }
 }

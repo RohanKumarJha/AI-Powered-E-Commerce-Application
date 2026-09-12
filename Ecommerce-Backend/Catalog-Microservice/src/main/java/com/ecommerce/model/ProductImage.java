@@ -1,12 +1,12 @@
 package com.ecommerce.model;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "product_images")
+@Document(collection = "product_images")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,14 +15,10 @@ import java.time.LocalDateTime;
 public class ProductImage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productImageId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    private Long productId;
 
-    @Column(nullable = false)
     private String imageUrl;
 
     private Integer displayOrder;
@@ -30,26 +26,11 @@ public class ProductImage {
     @Builder.Default
     private Boolean primaryImage = false;
 
-    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false, updatable = false)
     private Long createdBy;
 
-    @Column(nullable = false)
     private Long updatedBy;
-
-    @PrePersist
-    public void prePersist() {
-        createdAt = LocalDateTime.now();
-        updatedAt = createdAt;
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }

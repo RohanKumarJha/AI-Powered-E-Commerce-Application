@@ -1,15 +1,15 @@
 package com.ecommerce.model;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "products")
+@Document(collection = "products")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,37 +18,25 @@ import java.util.Set;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    @Column(nullable = false, length = 200)
     private String name;
 
-    @Column(length = 2000)
     private String description;
 
-    @Column(nullable = false, unique = true)
     private String sku;
 
-    @Column(nullable = false)
     private BigDecimal price;
 
     @Builder.Default
-    @Column(nullable = false)
     private BigDecimal discount = BigDecimal.ZERO;
 
-    @Column(nullable = false)
     private BigDecimal specialPrice;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+    private Long categoryId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brand_id", nullable = false)
-    private Brand brand;
+    private Long brandId;
 
-    @Column(nullable = false)
     private Long sellerId;
 
     @Builder.Default
@@ -60,36 +48,17 @@ public class Product {
     @Builder.Default
     private Boolean active = true;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private Set<ProductImage> images = new HashSet<>();
+    private Set<Long> imageIds = new HashSet<>();
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private Set<Review> reviews = new HashSet<>();
+    private Set<Long> reviewIds = new HashSet<>();
 
-    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false, updatable = false)
     private Long createdBy;
 
-    @Column(nullable = false)
     private Long updatedBy;
-
-    @PrePersist
-    public void prePersist() {
-        createdAt = LocalDateTime.now();
-        updatedAt = createdAt;
-        specialPrice = price.subtract(discount);
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        updatedAt = LocalDateTime.now();
-        specialPrice = price.subtract(discount);
-    }
 }
