@@ -12,6 +12,7 @@ import com.ecommerce.service.factory.UserFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class AddressServiceImpl implements AddressService {
     private final UserFactory userFactory;
 
     @Override
+    @Transactional
     public AddressResponse addAddress(
             Long userId,
             AddressRequest request) {
@@ -45,6 +47,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    @Transactional
     public AddressResponse updateAddress(
             Long addressId,
             AddressRequest request) {
@@ -62,6 +65,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    @Transactional
     public void deleteAddress(Long addressId) {
         Address address = addressFactory.getAddressById(addressId);
         addressRepository.delete(address);

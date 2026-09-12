@@ -5,13 +5,16 @@ spring:
   application:
     name: Identity-Microservice
   datasource:
-    url: jdbc:h2:mem:testdb
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://${IDENTITY_DB_HOST:identity-mysql}:${IDENTITY_DB_PORT:3306}/${IDENTITY_DB_NAME:identity_db}
+    username: ${IDENTITY_DB_USERNAME:identity_user}
+    password: ${IDENTITY_DB_PASSWORD:identity_password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
 eureka:
   client:

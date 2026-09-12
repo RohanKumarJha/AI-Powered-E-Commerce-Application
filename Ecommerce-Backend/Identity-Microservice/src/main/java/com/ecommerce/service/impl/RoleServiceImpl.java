@@ -11,6 +11,7 @@ import com.ecommerce.service.factory.RoleFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class RoleServiceImpl implements RoleService {
     private final RoleMapper roleMapper;
 
     @Override
+    @Transactional
     public RoleResponse createRole(RoleRequest request) {
         if (roleRepository.existsByRoleType(request.getRoleType())) {
             throw new ResourceAlreadyExistsException("Role", "roleType", request.getRoleType());
@@ -35,6 +37,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public RoleResponse updateRole(Long roleId, RoleRequest request) {
         Role role = roleFactory.getRoleById(roleId);
         if (!role.getRoleType().equals(request.getRoleType())
@@ -53,6 +56,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public void deleteRole(Long roleId) {
         Role role = roleFactory.getRoleById(roleId);
         roleRepository.delete(role);

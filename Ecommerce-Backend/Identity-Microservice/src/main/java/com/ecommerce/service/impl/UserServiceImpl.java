@@ -15,6 +15,7 @@ import com.ecommerce.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Set;
@@ -31,6 +32,7 @@ public class UserServiceImpl implements UserService {
     private final UserFactory userFactory;
 
     @Override
+    @Transactional
     public UserResponse registerUser(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new ResourceAlreadyExistsException(
@@ -82,6 +84,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserResponse updateUser(
             Long userId,
             UpdateUserRequest request) {
@@ -96,6 +99,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void deleteUser(Long userId) {
         User user = userFactory.getUserById(userId);
         userRepository.delete(user);
