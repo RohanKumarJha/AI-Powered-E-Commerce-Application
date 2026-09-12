@@ -46,6 +46,9 @@ services:
       CATALOG_MONGO_PASSWORD: ${CATALOG_MONGO_PASSWORD}
     ports:
       - "8082:8082"
+    depends_on:
+      catalog-mongodb:
+        condition: service_healthy
 
   catalog-mongodb:
     image: mongo:8
@@ -69,8 +72,36 @@ services:
   inventory-service:
     image: inventory-microservice:v1
     container_name: inventory-service
+    environment:
+      INVENTORY_DB_HOST: inventory-postgres
+      INVENTORY_DB_PORT: 5432
+      INVENTORY_DB_NAME: ${INVENTORY_DB_NAME}
+      INVENTORY_DB_USER: ${INVENTORY_DB_USER}
+      INVENTORY_DB_PASSWORD: ${INVENTORY_DB_PASSWORD}
     ports:
       - "8083:8083"
+    depends_on:
+      inventory-postgres:
+        condition: service_healthy
+
+  inventory-postgres:
+    image: postgres:17
+    container_name: inventory-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${INVENTORY_DB_NAME}
+      POSTGRES_USER: ${INVENTORY_DB_USER}
+      POSTGRES_PASSWORD: ${INVENTORY_DB_PASSWORD}
+    ports:
+      - "${INVENTORY_DB_PORT}:5432"
+    volumes:
+      - inventory-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${INVENTORY_DB_USER} -d ${INVENTORY_DB_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   cart-service:
     image: cart-microservice:v1
@@ -112,3 +143,4 @@ services:
 volumes:
   identity-mysql-data:
   catalog-mongodb-data:
+  inventory-postgres-data:
