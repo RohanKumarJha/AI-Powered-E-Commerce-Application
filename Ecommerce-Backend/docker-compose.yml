@@ -12,6 +12,8 @@ services:
     ports:
       - "8081:8081"
     depends_on:
+      eureka-service:
+        condition: service_started
       identity-mysql:
         condition: service_healthy
 
@@ -47,6 +49,8 @@ services:
     ports:
       - "8082:8082"
     depends_on:
+      eureka-service:
+        condition: service_started
       catalog-mongodb:
         condition: service_healthy
 
@@ -81,6 +85,8 @@ services:
     ports:
       - "8083:8083"
     depends_on:
+      eureka-service:
+        condition: service_started
       inventory-postgres:
         condition: service_healthy
 
@@ -109,8 +115,10 @@ services:
     ports:
       - "8084:8084"
     depends_on:
-      cart-redis:
+      eureka-service:
         condition: service_started
+      cart-redis:
+        condition: service_healthy
 
   cart-redis:
     image: redis:7
@@ -118,6 +126,15 @@ services:
     restart: unless-stopped
     ports:
       - "${CART_REDIS_PORT}:6379"
+    volumes:
+      - cart-redis-data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
 
   order-service:
     image: order-microservice:v1
@@ -131,6 +148,8 @@ services:
     ports:
       - "8085:8085"
     depends_on:
+      eureka-service:
+        condition: service_started
       order-postgres:
         condition: service_healthy
 
@@ -159,6 +178,8 @@ services:
     ports:
       - "8086:8086"
     depends_on:
+      eureka-service:
+        condition: service_started
       payment-postgres:
         condition: service_healthy
 
@@ -187,6 +208,8 @@ services:
     ports:
       - "8087:8087"
     depends_on:
+      eureka-service:
+        condition: service_started
       notification-postgres:
         condition: service_healthy
 
@@ -221,6 +244,8 @@ services:
     ports:
       - "8088:8088"
     depends_on:
+      eureka-service:
+        condition: service_started
       ai-postgres:
         condition: service_healthy
 
@@ -248,12 +273,16 @@ services:
     container_name: api-gateway
     ports:
       - "8080:8080"
+    depends_on:
+      eureka-service:
+        condition: service_started
 
 
 volumes:
   identity-mysql-data:
   catalog-mongodb-data:
   inventory-postgres-data:
+  cart-redis-data:
   order-postgres-data:
   payment-postgres-data:
   notification-postgres-data:
