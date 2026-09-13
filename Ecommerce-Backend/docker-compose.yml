@@ -186,6 +186,28 @@ services:
     container_name: notification-service
     ports:
       - "8087:8087"
+    depends_on:
+      notification-postgres:
+        condition: service_healthy
+
+  notification-postgres:
+    image: postgres:17
+    container_name: notification-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${NOTIFICATION_DB_NAME}
+      POSTGRES_USER: ${NOTIFICATION_DB_USER}
+      POSTGRES_PASSWORD: ${NOTIFICATION_DB_PASSWORD}
+    ports:
+      - "${NOTIFICATION_DB_PORT}:5432"
+    volumes:
+      - notification-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${NOTIFICATION_DB_USER} -d ${NOTIFICATION_DB_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   ai-service:
     image: ai-microservice:v1
@@ -206,3 +228,4 @@ volumes:
   inventory-postgres-data:
   order-postgres-data:
   payment-postgres-data:
+  notification-postgres-data:

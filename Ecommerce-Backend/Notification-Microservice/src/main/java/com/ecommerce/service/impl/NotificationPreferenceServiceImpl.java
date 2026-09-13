@@ -11,6 +11,7 @@ import com.ecommerce.service.factory.NotificationPreferenceFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ public class NotificationPreferenceServiceImpl implements NotificationPreference
     private final NotificationPreferenceMapper preferenceMapper;
 
     @Override
+    @Transactional
     public NotificationPreferenceResponse createPreference(
             NotificationPreferenceRequest request) {
         log.info(
@@ -60,6 +62,7 @@ public class NotificationPreferenceServiceImpl implements NotificationPreference
     }
 
     @Override
+    @Transactional
     public NotificationPreferenceResponse updatePreference(
             Long userId,
             NotificationPreferenceRequest request) {
@@ -87,6 +90,7 @@ public class NotificationPreferenceServiceImpl implements NotificationPreference
     }
 
     @Override
+    @Transactional
     public void deletePreference(
             Long userId) {
         log.info(

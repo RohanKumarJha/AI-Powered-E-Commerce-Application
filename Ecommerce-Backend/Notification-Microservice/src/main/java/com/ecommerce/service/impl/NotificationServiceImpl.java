@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -35,6 +36,7 @@ public class NotificationServiceImpl implements NotificationService {
     private final Map<NotificationType, NotificationStrategy> strategyMap;
 
     @Override
+    @Transactional
     public NotificationResponse createNotification(
             NotificationRequest request) {
         log.info(
@@ -137,6 +139,7 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
+    @Transactional
     public NotificationResponse updateNotificationStatus(
             Long notificationId,
             UpdateNotificationStatusRequest request) {
@@ -165,6 +168,7 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
+    @Transactional
     public void deleteNotification(
             Long notificationId) {
         log.info(

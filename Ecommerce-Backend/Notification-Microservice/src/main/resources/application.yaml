@@ -4,14 +4,20 @@ server:
 spring:
   application:
     name: Notification-Microservice
+
   datasource:
-    url: jdbc:h2:mem:testdb
-  h2:
-    console:
-      enabled: true
+    url: jdbc:postgresql://${NOTIFICATION_DB_HOST:notification-postgres}:${NOTIFICATION_DB_PORT:5432}/${NOTIFICATION_DB_NAME:notification_db}
+    username: ${NOTIFICATION_DB_USER:notification_user}
+    password: ${NOTIFICATION_DB_PASSWORD:notification_password}
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
 eureka:
   client:
