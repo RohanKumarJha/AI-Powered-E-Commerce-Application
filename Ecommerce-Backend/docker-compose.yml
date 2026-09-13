@@ -158,6 +158,28 @@ services:
     container_name: payment-service
     ports:
       - "8086:8086"
+    depends_on:
+      payment-postgres:
+        condition: service_healthy
+
+  payment-postgres:
+    image: postgres:17
+    container_name: payment-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${PAYMENT_DB_NAME}
+      POSTGRES_USER: ${PAYMENT_DB_USER}
+      POSTGRES_PASSWORD: ${PAYMENT_DB_PASSWORD}
+    ports:
+      - "${PAYMENT_DB_PORT}:5432"
+    volumes:
+      - payment-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${PAYMENT_DB_USER} -d ${PAYMENT_DB_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   notification-service:
     image: notification-microservice:v1
@@ -183,3 +205,4 @@ volumes:
   catalog-mongodb-data:
   inventory-postgres-data:
   order-postgres-data:
+  payment-postgres-data:
