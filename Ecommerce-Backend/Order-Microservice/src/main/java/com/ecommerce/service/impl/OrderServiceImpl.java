@@ -29,6 +29,7 @@ import com.ecommerce.util.PageResponseUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,6 +53,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderState cancelledState;
 
     @Override
+    @Transactional
     public OrderResponse createOrder(OrderRequest request) {
         Order order = orderFactory.createOrder(request);
         Long userId = UserContext.getCurrentUserId();
@@ -121,6 +123,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public OrderResponse updateOrderStatus(Long orderId, UpdateOrderStatusRequest request) {
         if (request == null) {
             throw new BadRequestException(
@@ -138,6 +141,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional
     public void deleteOrder(Long orderId) {
         Order order = findOrderById(orderId);
         if (order.getStatus() != OrderStatus.PENDING

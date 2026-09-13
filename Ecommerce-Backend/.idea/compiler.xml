@@ -20,10 +20,9 @@
         </processorPath>
         <module name="Notification-Microservice" />
         <module name="AI-Microservice" />
-        <module name="Order-Microservice" />
         <module name="Payment-Microservice" />
       </profile>
-      <profile name="Annotation profile for Cart-Microservice" enabled="true">
+      <profile name="Annotation profile for Order-Microservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -32,6 +31,7 @@
         </processorPath>
         <module name="Catalog-Microservice" />
         <module name="Inventory-Microservice" />
+        <module name="Order-Microservice" />
         <module name="Identity-Microservice" />
         <module name="Cart-Microservice" />
       </profile>

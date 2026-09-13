@@ -10,6 +10,7 @@ import com.ecommerce.repository.OrderItemRepository;
 import com.ecommerce.service.OrderItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     private final OrderItemMapper orderItemMapper;
 
     @Override
+    @Transactional
     public OrderItemResponse addOrderItem(OrderItemRequest request) {
         throw new BadRequestException(
                 "Order items are created automatically during checkout."
@@ -49,6 +51,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    @Transactional
     public void deleteOrderItem(Long orderItemId) {
         OrderItem orderItem = findOrderItemById(orderItemId);
         orderItemRepository.delete(orderItem);

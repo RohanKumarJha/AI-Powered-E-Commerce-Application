@@ -122,8 +122,36 @@ services:
   order-service:
     image: order-microservice:v1
     container_name: order-service
+    environment:
+      ORDER_DB_HOST: order-postgres
+      ORDER_DB_PORT: 5432
+      ORDER_DB_NAME: ${ORDER_DB_NAME}
+      ORDER_DB_USER: ${ORDER_DB_USER}
+      ORDER_DB_PASSWORD: ${ORDER_DB_PASSWORD}
     ports:
       - "8085:8085"
+    depends_on:
+      order-postgres:
+        condition: service_healthy
+
+  order-postgres:
+    image: postgres:17
+    container_name: order-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${ORDER_DB_NAME}
+      POSTGRES_USER: ${ORDER_DB_USER}
+      POSTGRES_PASSWORD: ${ORDER_DB_PASSWORD}
+    ports:
+      - "${ORDER_DB_PORT}:5432"
+    volumes:
+      - order-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${ORDER_DB_USER} -d ${ORDER_DB_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   payment-service:
     image: payment-microservice:v1
@@ -154,3 +182,4 @@ volumes:
   identity-mysql-data:
   catalog-mongodb-data:
   inventory-postgres-data:
+  order-postgres-data:
