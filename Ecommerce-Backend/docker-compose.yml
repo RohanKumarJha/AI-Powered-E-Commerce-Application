@@ -212,8 +212,36 @@ services:
   ai-service:
     image: ai-microservice:v1
     container_name: ai-service
+    environment:
+      AI_DB_HOST: ai-postgres
+      AI_DB_PORT: 5432
+      AI_DB_NAME: ${AI_DB_NAME}
+      AI_DB_USER: ${AI_DB_USER}
+      AI_DB_PASSWORD: ${AI_DB_PASSWORD}
     ports:
       - "8088:8088"
+    depends_on:
+      ai-postgres:
+        condition: service_healthy
+
+  ai-postgres:
+    image: postgres:17
+    container_name: ai-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${AI_DB_NAME}
+      POSTGRES_USER: ${AI_DB_USER}
+      POSTGRES_PASSWORD: ${AI_DB_PASSWORD}
+    ports:
+      - "${AI_DB_PORT}:5432"
+    volumes:
+      - ai-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${AI_DB_USER} -d ${AI_DB_NAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   api-gateway:
     image: api-gateway:v1
@@ -229,3 +257,4 @@ volumes:
   order-postgres-data:
   payment-postgres-data:
   notification-postgres-data:
+  ai-postgres-data:

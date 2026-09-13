@@ -10,7 +10,7 @@
         <module name="API-Gateway" />
         <module name="Eureka-Microservice" />
       </profile>
-      <profile name="Annotation profile for Notification-Microservice" enabled="true">
+      <profile name="Annotation profile for AI-Microservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

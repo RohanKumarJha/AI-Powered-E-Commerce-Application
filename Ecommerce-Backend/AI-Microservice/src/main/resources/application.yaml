@@ -4,14 +4,20 @@ server:
 spring:
   application:
     name: AI-Microservice
+
   datasource:
-    url: jdbc:h2:mem:testdb
-  h2:
-    console:
-      enabled: true
+    url: jdbc:postgresql://${AI_DB_HOST:ai-postgres}:${AI_DB_PORT:5432}/${AI_DB_NAME:ai_db}
+    username: ${AI_DB_USER:ai_user}
+    password: ${AI_DB_PASSWORD:ai_password}
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
 eureka:
   client:
